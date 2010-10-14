@@ -1,0 +1,14 @@
+*.pyc
+*.pyo
+*.*~
+
+.coverage
+.project
+.pydevproject
+.settings
+
+docs/_build
+
+*.db*
+*settings_local.py
+*.directory
