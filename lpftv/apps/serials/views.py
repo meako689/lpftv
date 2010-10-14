@@ -2,6 +2,6 @@
 
 from django.http import HttpResponse
 
-def serial(request):
+def show_serial(request):
      return HttpResponse("It's serial's page!")
 
