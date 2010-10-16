@@ -22,3 +22,15 @@ class Movie(models.Model):
     def __unicode__(self):
         return self.name
 
+class New(models.Model):
+    name = models.CharField(max_length=100, verbose_name = "New's name")
+    describe = models.TextField(verbose_name = "Short describe")
+    text = models.TextField(verbose_name = "News")
+    pub_date = models.DateTimeField("Publicated date")
+
+class Comment(models.Model):
+    author = models.CharField(max_length = 50, verbose_name = "Author")
+    text = models.TextField(verbose_name = "Comment")
+    link = models.ForeignKey(Serial or New or Movie)
+    pub_date = models.DateTimeField("Comment's date")
+
