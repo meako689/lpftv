@@ -6,24 +6,27 @@ class Serial(models.Model):
     short_describe = models.TextField(verbose_name = "Short describe")
     full_describe = models.TextField(verbose_name = "Full describe")
     origin_img = models.ImageField(upload_to = "photos") 
+    last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
     pub_date = models.DateTimeField()
 
-    def save(self): 
-         oldfile = self.origin_img.path
-         models.Model.save(self)
-         print oldfile + " : " + str(os.path.exists(oldfile))
-         if os.path.exists(oldfile):
-             print oldfile + " : " + os.path.exists(oldfile)
-             os.remove(oldfile)
-         oldfile = oldfile[:-4]+ "_small.jpeg"
-         if os.path.exists(oldfile):
-             os.remove(oldfile) 
-         size = 128
-         try:
-             im = Image.open(self.origin_img.path)
-             im.thumbnail((size, size), Image.ANTIALIAS)
-             im.save(self.origin_img.path[:-4] + "_small.jpeg", "jpeg")
-         except IOError:
+    def pre_save(self):
+        try:
+            if os.path.exists(self.last_img.path):
+                os.remove(self.last_img.path)
+            if os.path.exists(self.last_img.path[:-4]+"_small.jpeg"):
+                os.remove(self.last_img.path[:-4]+"_small.jpeg")
+        except:
+            None
+        self.last_img = self.origin_img
+
+    def save(self):
+        size = 128
+        models.Model.save(self)
+        try:
+            im = Image.open(self.origin_img.path)
+            im.thumbnail((size, size), Image.ANTIALIAS)
+            im.save(self.origin_img.path[:-4] + "_small.jpeg", "jpeg")
+        except IOError:
             print "IOError: cann't resize image "
 
     def delete(self, save=True):
@@ -42,10 +45,37 @@ class Movie(models.Model):
     serial = models.ForeignKey(Serial)
     name = models.CharField(max_length = 50, verbose_name = "Serial's name")
     short_describe = models.TextField(verbose_name = "Shor describe")
-    full_describe = models.TextField(verbose_name = "Full describe")
     origin_img = models.ImageField(upload_to = "photos")
     movie = models.FileField(upload_to = "serials")
     pub_date = models.DateTimeField()
+    last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
+    
+    def pre_save(self):
+        try:
+            if os.path.exists(self.last_img.path):
+                os.remove(self.last_img.path)
+            if os.path.exists(self.last_img.path[:-4]+"_small.jpeg"):
+                os.remove(self.last_img.path[:-4]+"_small.jpeg")
+        except:
+            None
+        self.last_img = self.origin_img
+
+    def save(self):
+        size = 128
+        models.Model.save(self)
+        try:
+            im = Image.open(self.origin_img.path)
+            im.thumbnail((size, size), Image.ANTIALIAS)
+            im.save(self.origin_img.path[:-4] + "_small.jpeg", "jpeg")
+        except IOError:
+            print "IOError: cann't resize image "
+
+    def delete(self, save=True):
+        name = self.origin_img.path[:4] + "_small.jpeg"
+        if os.path.exists(name):
+            os.remove(name)
+        model.Model.delete(self, save)
+
 
     class Meta:
         ordering = ('-pub_date',)
@@ -65,7 +95,19 @@ class New(models.Model):
     def __unicode__(self):
         return name
 
-class Comment(models.Model):
+class SComment(models.Model):
+    author = models.CharField(max_length = 50, verbose_name = "Author")
+    text = models.TextField(verbose_name = "Comment")
+    link = models.ForeignKey(Serial)
+    pub_date = models.DateTimeField("Comment's date")
+
+    class Meta:
+        ordering = ('-pub_date',)
+
+    def __unicode__(self):
+        return author + ": " +links
+
+class MComment(models.Model):
     author = models.CharField(max_length = 50, verbose_name = "Author")
     text = models.TextField(verbose_name = "Comment")
     link = models.ForeignKey(Movie)
@@ -76,4 +118,25 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return author + ": " +links
+
+class NComment(models.Model):
+    author = models.CharField(max_length = 50, verbose_name = "Author")
+    text = models.TextField(verbose_name = "Comment")
+    link = models.ForeignKey(New)
+    pub_date = models.DateTimeField("Comment's date")
+
+    class Meta:
+        ordering = ('-pub_date',)
+
+    def __unicode__(self):
+        return author + ": " +links
+
+def pre_save(sender, **kwargs):
+    sobject = kwargs['instance']
+    try:
+        sobject.pre_save()
+    except:
+        None
+
+models.signals.pre_save.connect(pre_save)
 
