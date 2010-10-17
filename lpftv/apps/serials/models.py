@@ -1,4 +1,5 @@
 from django.db import models
+from markdown import markdown
 import Image, os
 
 class Serial(models.Model):
@@ -9,12 +10,18 @@ class Serial(models.Model):
     last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
     pub_date = models.DateTimeField()
 
+    def get_small_image(self):
+        return self.origin_img.path[:-4]+"_small.jpeg"
+
+    def mark_short_describe(self):
+        return markdown(self.short_describe)
+
     def pre_save(self):
         try:
             if os.path.exists(self.last_img.path):
                 os.remove(self.last_img.path)
-            if os.path.exists(self.last_img.path[:-4]+"_small.jpeg"):
-                os.remove(self.last_img.path[:-4]+"_small.jpeg")
+            if os.path.exists(get_small_image(self)):
+                os.remove(get_small_image(self))
         except:
             None
         self.last_img = self.origin_img
