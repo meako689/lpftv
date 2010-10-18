@@ -36,8 +36,8 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-PROJECT_PATH = "/" + os.path.dirname(os.path.abspath(__file__))
-MEDIA_ROOT = "/" +  os.path.join(PROJECT_PATH, 'media')
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -48,7 +48,7 @@ MEDIA_URL = '/media_url/'
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/multi/'
-MEDIA_PREFIX = '/media/'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'yr1@ixe6-um0zoowcu#h=#mfbooc@wm47so5j$uwb975cg5kz1'
 
@@ -68,8 +68,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'lpftv.urls'
 
 TEMPLATE_DIRS = (
-    '/home/ivan/work/lpftv/lpftv/templates',
-    os.path.join(PROJECT_PATH,'media/tempaltes'),
+    os.path.join(PROJECT_PATH, 'templates',),
+    os.path.join(PROJECT_PATH, 'media/tempaltes'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
