@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from markdown import markdown
 import Image, os
@@ -6,12 +7,15 @@ class Serial(models.Model):
     name = models.CharField(max_length = 50, verbose_name = "Serials' name")
     short_describe = models.TextField(verbose_name = "Short describe")
     full_describe = models.TextField(verbose_name = "Full describe")
-    origin_img = models.ImageField(upload_to = "photos") 
+    origin_img = models.ImageField(upload_to = "photos", blank = True) 
     last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
     pub_date = models.DateTimeField()
 
     def get_small_image(self):
         return self.origin_img.path[:-4]+"_small.jpeg"
+
+    def get_small_name(self):
+        return self.origin_img.name[:-4]+"_small.jpeg"
 
     def mark_short_describe(self):
         return markdown(self.short_describe)
@@ -51,7 +55,7 @@ class Serial(models.Model):
 class Movie(models.Model):
     serial = models.ForeignKey(Serial)
     name = models.CharField(max_length = 50, verbose_name = "Serial's name")
-    short_describe = models.TextField(verbose_name = "Shor describe")
+    short_describe = models.TextField(verbose_name = "Short describe")
     origin_img = models.ImageField(upload_to = "photos")
     movie = models.FileField(upload_to = "serials")
     pub_date = models.DateTimeField()

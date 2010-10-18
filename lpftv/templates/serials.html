@@ -1,12 +1,13 @@
 {% extends "base.html"%}
 {% block content %}
 {% for serial in serials %}
+<img border = 0 src="home/ivan/work/lpftv/media/photos/Зображення0127_small.jpeg" width="128" height="128" alt="No image"/>
 <table border="0">
   <tr>
     <th colspan = 3>{{ serial.name }}</th>
   </tr>
   <tr>
-    <td rowspan = 2><img border = 0 src="{{ serial.small_image }}" width="128" height="128" alt="No image"/ ></td>
+    <td rowspan = 2><img border = 0 src='{{ serial.origin_img.url }}' width="128" height="128" alt="No image"/ ></td>
     <td colspan = 2>{{ serial.mark_short }}</td>
   </tr>
   <tr>
