@@ -1,5 +1,10 @@
 <html>
 <body>
+<h2>
+<a href={% url apps.serials.views.index %}>Головна</a>
+<a href={% url apps.serials.views.show_serial %}>Серіали</a>
+<a href={% url apps.serials.views.show_news %}>Новини</a>
+</h2>
 {% block content %}
 {% endblock %}
 </body>
