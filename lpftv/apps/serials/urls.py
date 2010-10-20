@@ -5,5 +5,6 @@ urlpatterns = patterns('apps.serials.views',
     (r'^serial/$','show_serial'),
     (r'^serial/(?P<s_id>\d+)/$', 'serial_dateil'),
     (r'^news/$', 'show_news'),
+    (r'^news/(?P<n_id>\d+)/$', 'news_dateil'),
 )
 

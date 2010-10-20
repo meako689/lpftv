@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Some news</h4>
+{% for new in news %}
+<hr/>
+<table border = 0>
+  <tr>
+    <td colspan = 2>{{ new.name }}</td>
+  </tr>
+  <tr>
+    <td colspan = 2>{{ new.short_describe}}</td>
+  </tr>
+  <tr>
+    <td>{{ new.pub_date}}</td>
+    <td><a href = {% url apps.serials.views.news_dateil new.id%}>детальніше</a></td>
+  </tr>
+</table>
+{% endfor %}
+
+<h4>Some serials</h4>
+{% for serial in serials %}
+<hr/>
+<table border="0">
+  <tr>
+    <td rowspan = 3><img border = 0 src='{{ serial.small_img }}' width="200" height="200" alt="No image"/ ></td>
+    <td> {{ serial.name }}</td>
+  </tr>
+  <tr>
+    <td colspan = 2>{{ serial.mark_short }}</td>
+  </tr>
+  <tr>
+    <td>{{ serial.pub_date }}</td>
+    <td><a href ={% url apps.serials.views.serial_dateil serial.id %} >детальніше</a></td>
+  </tr>
+</table>
+{% endfor %}
+
+{% endblock %}

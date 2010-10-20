@@ -12,3 +12,5 @@ docs/_build
 *.db*
 *settings_local.py
 *.directory
+
+lpftv/media/*

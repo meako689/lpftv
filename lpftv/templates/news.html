@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Some news</h4>
+{% for new in news %}
+<hr/>
+<table border = 0>
+  <tr>
+    <td colspan = 2>{{ new.name }}</td>
+  </tr>
+  <tr>
+    <td colspan = 2>{{ new.short_describe}}</td>
+  </tr>
+  <tr>
+    <td>{{ new.pub_date}}</td>
+    <td><a href = {% url apps.serials.views.news_dateil new.id%}>детальніше</a></td>
+  </tr>
+</table>
+{% endfor %}
+{% endblock %}

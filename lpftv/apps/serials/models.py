@@ -6,7 +6,7 @@ __docformat__ = "restructuredtext"
 
 class CFilm(models.Model):
     """
-    Base model for 'Movie' and 'Serial 
+    Base model for 'Movie' and 'Serial' models 
     """
     name = models.CharField(max_length = 50, verbose_name = "Serials' name")
     full_describe = models.TextField(verbose_name = "Full describe", blank = True)
@@ -54,7 +54,7 @@ class CFilm(models.Model):
         self.last_img = self.origin_img
 
     def delete(self):
-        """Remove images"""
+        """Remove images and remove record in database"""
         try:
             if os.path.exist(self.origin_img.path):
                 os.remove(self.origin_img.path)
@@ -82,9 +82,21 @@ class Serial(CFilm):
     short_describe = models.TextField(verbose_name = "Short describe")
 
 class Movie(CFilm):
-    """It's only movie"""
+    """This model is for save real movie(serial)"""
     serial = models.ForeignKey(Serial)
     movie = models.FileField(upload_to = "serials")
+
+class NewsRecord(models.Model):
+    name = models.CharField(max_length = 100, verbose_name = "News name")
+    short_discribe = models.TextField(verbose_name = "Short describe")
+    full_describe = models.TextField(verbose_name = "Full desribe")
+    pub_date = models.DateTimeField()
+    
+    def __unicode__(self):
+        return self.name 
+
+    class Meta:
+        ordering = ('-pub_date','name')
 
 models.signals.pre_save.connect(pre_save)
 
