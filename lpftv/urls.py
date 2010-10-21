@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     (r'^$', 'views.index'),
     (r'^home/', include('apps.serials.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^comments/', include('django.contrib.comments.urls')),
 )
 
 urlpatterns += patterns('',

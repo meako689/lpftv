@@ -82,5 +82,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.comments',
+    'django.contrib.markup',
     'apps.serials',
 )

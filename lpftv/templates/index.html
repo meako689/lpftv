@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% load markup %}
 <h4>Some news</h4>
 {% for new in news %}
 <hr/>
@@ -8,7 +9,7 @@
     <td colspan = 2>{{ new.name }}</td>
   </tr>
   <tr>
-    <td colspan = 2>{{ new.short_describe}}</td>
+    <td colspan = 2>{{ new.short_describe|markdown }}</td>
   </tr>
   <tr>
     <td>{{ new.pub_date}}</td>
@@ -22,11 +23,11 @@
 <hr/>
 <table border="0">
   <tr>
-    <td rowspan = 3><img border = 0 src='{{ serial.small_img }}' width="200" height="200" alt="No image"/ ></td>
+    <td rowspan = 3><img border = 0 src='{{serial.get_small_url}}' width="200" height="200" alt="No image"/ ></td>
     <td> {{ serial.name }}</td>
   </tr>
   <tr>
-    <td colspan = 2>{{ serial.mark_short }}</td>
+    <td colspan = 2>{{ serial.short_describe|markdown }}</td>
   </tr>
   <tr>
     <td>{{ serial.pub_date }}</td>

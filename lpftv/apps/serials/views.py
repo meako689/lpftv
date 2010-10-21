@@ -1,12 +1,9 @@
 from markdown import markdown
-from django.shortcuts import render_to_response
-from apps.serials.models import Serial, NewsRecord
+from django.shortcuts import render_to_response, get_object_or_404
+from apps.serials.models import Serial, Movie, NewsRecord
 
 def index(request):
      serials = Serial.objects.all()[:5]
-     for serial in serials:
-         serial.mark_short = markdown(serial.short_describe) 
-         serial.small_img = serial.get_small_url()
      news = NewsRecord.objects.all() 
      return render_to_response("index.html", {'news': news, 'serials': serials})
 
@@ -16,13 +13,13 @@ def show_news(request):
 
 def show_serial(request):
      serials = Serial.objects.all()
-     for serial in serials:
-         serial.mark_short = markdown(serial.short_describe) 
-         serial.small_img = serial.get_small_url() 
      return render_to_response("serials.html", {'serials': serials})
 
 def serial_dateil(request, s_id):
-     return render_to_response("base.html")
+     serials = get_object_or_404(Serial, id = s_id)
+     movies = Movie.objects.filter(serial = serials)
+     return render_to_response("serial_dateil.html", {'serial': serials, 'movies': movies})
 
 def news_dateil(request, n_id):
-     return render_to_response("base.html")
+     news = get_object_or_404(NewsRecord, id = n_id)
+     return render_to_response("news_dateil.html", {'news': news})

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+{% load markup %}
+<h2>{{serial.name}}</h2>
+<hr/>
+<table border = 0>
+  <tr>
+    <td rowspan=2><img border=0 src='{{serial.origin_img.url}}' width="400" alt="No image" /></td>
+  </tr>
+  <tr>
+    <td><h3>Опис:</h3><br/>
+    {{ serial.full_describe|markdown}}
+    </td>
+    <td>
+  </tr>
+  <tr>
+    <td>Опублікований: {{serial.pub_date}}</td>
+  </tr>
+</table>
+<hr/>
+Serials:<br/>
+{% for movie in movies %}
+<table border=0>
+  <tr>
+     <td rowspan=2><img src='{{movie.get_small_url}}'/><td/>
+  </tr>
+  <tr>
+     <td>{{movie.name}}<br/>{{movie.full_describe|markdown}}<td>
+     <td>{{movie.pub_date}}
+  </tr>
+</table><br/><hr/>
+{% endfor %}
+
+{% load comments %}
+{% get_comment_list for serial as serial_comm %}
+{% for comm in serial_comm %}
+{{ comm.name}} : {{comm.submit_date}}<br/>
+{{ comm.comment}}<br/>
+<hr/>
+{% endfor %}
+{% render_comment_form for serial %}
+<input type="submit" name="post" class="submit-post" value="Залишити коментар">
+{% endblock %}

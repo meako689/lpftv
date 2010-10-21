@@ -17,7 +17,7 @@ class CFilm(models.Model):
     def get_small_url(self):
         """Return url to small image"""
         return self.origin_img.url[:self.origin_img.url.rindex('.')]+ \
-            ".small"+self.origin_img.url[self.origin_img.url.rindex('.'):]
+                ".small"+self.origin_img.url[self.origin_img.url.rindex('.'):]
 
     def get_small_path(self):
         """Return path in local disk to small image"""
