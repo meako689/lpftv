@@ -13,7 +13,7 @@
   </tr>
   <tr>
     <td>{{ new.pub_date}}</td>
-    <td><a href = {% url apps.serials.views.news_dateil new.id%}>детальніше</a></td>
+    <td><a href = {{new.get_absolute_url}}>детальніше</a></td>
   </tr>
 </table>
 {% endfor %}
@@ -31,7 +31,7 @@
   </tr>
   <tr>
     <td>{{ serial.pub_date }}</td>
-    <td><a href ={% url apps.serials.views.serial_dateil serial.id %} >детальніше</a></td>
+    <td><a href ={{serial.get_absolute_url}} >детальніше</a></td>
   </tr>
 </table>
 {% endfor %}

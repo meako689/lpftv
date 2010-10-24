@@ -3,8 +3,8 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('apps.serials.views',
     (r'^$', 'index'),
     (r'^serial/$','show_serial'),
-    (r'^serial/(?P<s_id>\d+)/$', 'serial_dateil'),
     (r'^news/$', 'show_news'),
-    (r'^news/(?P<n_id>\d+)/$', 'news_dateil'),
+    url(r'^serial/(?P<s_id>\d+)/$', 'serial_dateil', name="serial_dateil"),
+    url(r'^news/(?P<n_id>\d+)/$', 'news_dateil', name="news_dateil"),
 )
 

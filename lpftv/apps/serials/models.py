@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.core.urlresolvers import reverse
 import Image, os
 
 __docformat__ = "restructuredtext"
@@ -10,7 +11,7 @@ class CFilm(models.Model):
     """
     name = models.CharField(max_length = 50, verbose_name = "Serials' name")
     full_describe = models.TextField(verbose_name = "Full describe", blank = True)
-    origin_img = models.ImageField(upload_to = "photos", blank = True) 
+    origin_img = models.ImageField(upload_to = "photos") 
     last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
     pub_date = models.DateTimeField()
 
@@ -81,12 +82,20 @@ class Serial(CFilm):
     """Contein serial describe and movie"""
     short_describe = models.TextField(verbose_name = "Short describe")
 
+    def get_absolute_url(self):
+        return reverse('serial_dateil', args=[self.id])
+
 class Movie(CFilm):
     """This model is for save real movie(serial)"""
     serial = models.ForeignKey(Serial)
     movie = models.FileField(upload_to = "serials")
 
+    def get_absolute_url(self):
+        """Url for download"""
+        return self.movie.url
+
 class NewsRecord(models.Model):
+    """This models uses for save news"""
     name = models.CharField(max_length = 100, verbose_name = "News name")
     short_discribe = models.TextField(verbose_name = "Short describe")
     full_describe = models.TextField(verbose_name = "Full desribe")
@@ -97,6 +106,9 @@ class NewsRecord(models.Model):
 
     class Meta:
         ordering = ('-pub_date','name')
+
+    def get_absolute_url(self):
+        return reverse('news_dateil', args=[self.id])
 
 models.signals.pre_save.connect(pre_save)
 

@@ -26,7 +26,8 @@ Serials:<br/>
   </tr>
   <tr>
      <td>{{movie.name}}<br/>{{movie.full_describe|markdown}}<td>
-     <td>{{movie.pub_date}}
+     <td>{{movie.pub_date}}</td>
+     <td><a href={{movie.get_absolute_url}}>download</a></td>
   </tr>
 </table><br/><hr/>
 {% endfor %}
