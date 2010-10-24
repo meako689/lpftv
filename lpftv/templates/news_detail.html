@@ -6,14 +6,29 @@
 {{news.full_describe}}<br/>
 {{news.pub_date}}<br/>
 <hr/>
-
 {% load comments %}
 {% get_comment_list for news as news_comm %}
-{% for comm in serial_comm %}
-{{ comm.name}} : {{comm.submit_date}}<br/>
+{% for comm in news_comm %}
+{{ comm.name}} :=> {{comm.submit_date|date:"F j, Y : P"}}<br/>
 {{ comm.comment}}<br/>
 <hr/>
 {% endfor %}
-{% render_comment_form for news %}
-<input type="submit" name="post" class="submit-post" value="Залишити коментар">
+{% get_comment_form for news as form %}
+<form id="comment_form" action="{% comment_form_target %}" method="post">
+<input type="hidden" name="next" value="{{news.get_absolute_url}}" />
+  {% for field in form %}
+    {% if field.is_hidden %}
+      {{ field }}
+    {% else %}
+      {% if field.errors %}
+      <p class="error">
+      {{ field.errors }}
+      </p>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+<label for="id_name">Name</label></br><input id="id_name" type="text" name="name" maxlength="50" /> </p> 
+<label for="id_comment">Comment</label></br><textarea name="comment" id="id_comment" rows="3" cols="56"></textarea></p>
+<input type="submit" name="post" class="submit-post" value="Додати коментар" />
+</form>
 {% endblock %}
