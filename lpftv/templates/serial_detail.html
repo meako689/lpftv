@@ -35,10 +35,26 @@ Serials:<br/>
 {% load comments %}
 {% get_comment_list for serial as serial_comm %}
 {% for comm in serial_comm %}
-{{ comm.name}} : {{comm.submit_date}}<br/>
+{{ comm.name}} : {{comm.submit_date|date:"F j, Y : P"}}<br/>
 {{ comm.comment}}<br/>
 <hr/>
 {% endfor %}
-{% render_comment_form for serial %}
-<input type="submit" name="post" class="submit-post" value="Залишити коментар">
+{% get_comment_form for serial as form %}
+<form id="comment_form" action="{% comment_form_target %}" method="post">
+<input type="hidden" name="next" value="{{request.path|urlencode}}" />
+  {% for field in form %}
+    {% if field.is_hidden %}
+      {{ field }}
+    {% else %}
+      {% if field.errors %}
+      <p class="error">
+      {{ field.errors }}
+      </p>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+<label for="id_name">Name</label> <input id="id_name" type="text" name="name" maxlength="50" /> </p> 
+<textarea name="comment" id="id_comment" rows="3" cols="56"></textarea></p>
+</form>
+<input type="submit" name="post" class="submit-post" value="Додати коментар" />
 {% endblock %}
