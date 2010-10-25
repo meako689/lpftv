@@ -15,11 +15,11 @@ def show_serial(request):
      serials = Serial.objects.all()
      return render_to_response("serials.html", {'serials': serials})
 
-def serial_dateil(request, s_id):
+def serial_detail(request, s_id):
      serials = get_object_or_404(Serial, id = s_id)
      movies = Movie.objects.filter(serial = serials)
-     return render_to_response("serial_dateil.html", {'serial': serials, 'movies': movies})
+     return render_to_response("serial_detail.html", {'serial': serials, 'movies': movies})
 
-def news_dateil(request, n_id):
+def news_detail(request, n_id):
      news = get_object_or_404(NewsRecord, id = n_id)
-     return render_to_response("news_dateil.html", {'news': news})
+     return render_to_response("news_detail.html", {'news': news})

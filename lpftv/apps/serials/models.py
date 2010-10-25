@@ -83,7 +83,7 @@ class Serial(CFilm):
     short_describe = models.TextField(verbose_name = "Short describe")
 
     def get_absolute_url(self):
-        return reverse('serial_dateil', args=[self.id])
+        return reverse('serial_detail', args=[self.id])
 
 class Movie(CFilm):
     """This model is for save real movie(serial)"""
@@ -108,7 +108,7 @@ class NewsRecord(models.Model):
         ordering = ('-pub_date','name')
 
     def get_absolute_url(self):
-        return reverse('news_dateil', args=[self.id])
+        return reverse('news_detail', args=[self.id])
 
 models.signals.pre_save.connect(pre_save)
 
