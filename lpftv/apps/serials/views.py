@@ -18,8 +18,8 @@ def show_serial(request):
 def serial_detail(request, s_id):
      serials = get_object_or_404(Serial, id = s_id)
      movies = Movie.objects.filter(serial = serials)
-     return render_to_response("serial_detail.html", {'serial': serials, 'movies': movies})
+     return render_to_response("serial_detail.html", {'serial': serials, 'movies': movies, 'next': serials.get_absolute_url()})
 
 def news_detail(request, n_id):
      news = get_object_or_404(NewsRecord, id = n_id)
-     return render_to_response("news_detail.html", {'news': news})
+     return render_to_response("news_detail.html", {'news': news, 'next': news.get_absolute_url()})

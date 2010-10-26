@@ -39,22 +39,5 @@ Serials:<br/>
 {{ comm.comment}}<br/>
 <hr/>
 {% endfor %}
-{% get_comment_form for serial as form %}
-<form id="comment_form" action="{% comment_form_target %}" method="post">
-<input type="hidden" name="next" value="{{serial.get_absolute_url}}" />
-  {% for field in form %}
-    {% if field.is_hidden %}
-      {{ field }}
-    {% else %}
-      {% if field.errors %}
-      <p class="error">
-      {{ field.errors }}
-      </p>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-<label for="id_name">Name</label></br><input id="id_name" type="text" name="name" maxlength="50" /> </p> 
-<label for="id_comment">Comment</label></br><textarea name="comment" id="id_comment" rows="3" cols="56"></textarea></p>
-<input type="submit" name="post" class="submit-post" value="Додати коментар" />
-</form>
+{% render_comment_form for serial %}
 {% endblock %}
