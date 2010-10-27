@@ -10,8 +10,12 @@
   <a class="button" href={% url apps.serials.views.show_news %}>НОВИНИ</a>
 </div>
 </h2>
-{% load markup %}
+<div class="content">
 {% block content %}
 {% endblock %}
+</div>
+<div class="sidebar">
+<h2>Свіжі серії</h2>
+</div>
 </body>
 </html>
