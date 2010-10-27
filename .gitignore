@@ -13,4 +13,4 @@ docs/_build
 *settings_local.py
 *.directory
 
-lpftv/media/*
+lpftv/media/photos/*

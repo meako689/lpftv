@@ -1,0 +1,100 @@
+body
+{
+  background : #666666;     
+}
+
+div.content
+{ 
+  float: left;
+  width: 900px;
+}
+
+.img_contein
+{
+  float: left;
+  padding: 5px;
+  margin: 5px;
+}
+
+
+div.sidebar
+{
+  float: right;
+  width: 300px;
+  padding: 10px;
+  margin: 0px;
+  margin-top: 15px;
+  float: left;
+  background: #a1a1a1;
+  border-radius: 5px;
+}
+
+div.brd
+{
+  background-image: url('line.png');
+  background-repeat: no-repeat; 
+  padding: 15px;
+  margin: 15px; 
+}
+
+div.obj
+{
+  background: #fff;
+  border: 2px ridge #000;
+  padding: 15px;
+  margin: 15px;
+}
+
+span.name
+{
+  font: bold 20pt/18pt sans-serif;
+  color: #5d61f3;
+}
+
+span.date
+{
+  color: #000;
+  float: right;
+  margin: 5px;
+}
+
+h2
+{
+  color: #fff;
+  font: bold 20pt/18pt sans-serif;
+}
+
+.describe
+{
+  color: #000;
+  margin: 5px;
+  float: right;
+}
+
+.next
+{
+  text-decoration: None;
+  font: bold 12pt/10pt sans-serif;
+  color: #6f6f6f;
+}
+
+.comments
+{
+  float: right;
+}
+
+a.button
+{
+    text-decoration: None;
+    font: bold 15pt/13pt sans-serif;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    height: 50px;
+    width: 200px;
+    line-height: 50px;
+    text-align: center;
+    background-image: url('button.png');
+    background-repeat: no-repeat;
+}
+.button:hover { background-position:0 -50px }

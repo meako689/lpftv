@@ -3,29 +3,24 @@
 {% load markup %}
 {% for new in news %}
 <div class="obj">
-  <spin class="name">{{new.name}}</spin>
-  <spin class="date">Опублікована {{new.pub_date}}</spin>
+  <span class="name">{{new.name}}</span>
+  <span class="date">Опублікована {{new.pub_date}}</span>
   <hr size="4" color="5d61f3"/>
   <p class="describe">{{new.short_describe|markdown}}</p>
   <a class="next" href="{{new.get_absolute_url}}">Читати далі</a>
-  <spin class="next comments">Коментарі()</spin>
+  <span class="next comments">Коментарі()</span>
 </div>
 {% endfor %}
 {% for serial in serials %}
-<hr/>
-<table border="0">
-  <tr>
-    <td rowspan = 3><img border = 0 src='{{serial.get_small_url}}' width="200" height="200" alt="No image"/ ></td>
-    <td> {{ serial.name }}</td>
-  </tr>
-  <tr>
-    <td colspan = 2>{{ serial.short_describe|markdown }}</td>
-  </tr>
-  <tr>
-    <td>{{ serial.pub_date }}</td>
-    <td><a href ={{serial.get_absolute_url}} >детальніше</a></td>
-  </tr>
-</table>
+<div class="obj">
+  <span class="name">{{serial.name}}</span>
+  <span class="date">Опублікована {{serial.pub_date}}</span>
+  <hr size="4" color="5d61f3"/>
+  <img align="left" src="{{serial.get_small_url}}"  alt="No image"/>
+  <p class="describe">{{serial.short_describe|markdown}}</p>
+  <a class="next" href="{{serial.get_absolute_url}}">Читати далі</a>
+  <span class="next comments">Коментарі()</span>
+</div>
 {% endfor %}
 
 {% endblock %}
