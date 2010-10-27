@@ -65,6 +65,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
+STATIC_DOC_ROOT = os.path.join(PROJECT_PATH, 'media')
+
 ROOT_URLCONF = 'lpftv.urls'
 
 TEMPLATE_DIRS = (
@@ -74,7 +76,17 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-STATIC_DOC_ROOT = os.path.join(PROJECT_PATH, 'media')
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth", 
+    "django.core.context_processors.debug", 
+    "django.core.context_processors.i18n", 
+    "django.core.context_processors.media", 
+    "django.core.context_processors.request", 
+    'django.core.context_processors.media',
+)
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',

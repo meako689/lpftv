@@ -1,24 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 {% load markup %}
-<h4>Some news</h4>
 {% for new in news %}
-<hr/>
-<table border = 0>
-  <tr>
-    <td colspan = 2>{{ new.name }}</td>
-  </tr>
-  <tr>
-    <td colspan = 2>{{ new.short_describe|markdown }}</td>
-  </tr>
-  <tr>
-    <td>{{ new.pub_date}}</td>
-    <td><a href = {{new.get_absolute_url}}>детальніше</a></td>
-  </tr>
-</table>
+<div class="obj">
+  <spin class="name">{{new.name}}</spin>
+  <spin class="date">Опублікована {{new.pub_date}}</spin>
+  <hr size="4" color="5d61f3"/>
+  <p class="describe">{{new.short_describe|markdown}}</p>
+  <a class="next" href="{{new.get_absolute_url}}">Читати далі</a>
+  <spin class="next comments">Коментарі()</spin>
+</div>
 {% endfor %}
-
-<h4>Some serials</h4>
 {% for serial in serials %}
 <hr/>
 <table border="0">

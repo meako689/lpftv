@@ -97,7 +97,7 @@ class Movie(CFilm):
 class NewsRecord(models.Model):
     """This models uses for save news"""
     name = models.CharField(max_length = 100, verbose_name = "News name")
-    short_discribe = models.TextField(verbose_name = "Short describe")
+    short_describe = models.TextField(verbose_name = "Short describe")
     full_describe = models.TextField(verbose_name = "Full desribe")
     pub_date = models.DateTimeField()
     
