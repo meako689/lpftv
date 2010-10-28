@@ -31,7 +31,7 @@ div.sidebar
 
 div.brd
 {
-  background-image: url('line.png');
+  background-image: url('../img/line.png');
   background-repeat: no-repeat; 
   padding: 15px;
   margin: 15px; 
@@ -94,7 +94,7 @@ a.button
     width: 200px;
     line-height: 50px;
     text-align: center;
-    background-image: url('button.png');
+    background-image: url('../img/button.png');
     background-repeat: no-repeat;
 }
 .button:hover { background-position:0 -50px }
