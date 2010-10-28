@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td><h3>Опис:</h3><br/>
-    {{ serial.full_describe|markdown}}
+    {{ serial.full_description|markdown}}
     </td>
     <td>
   </tr>
@@ -25,7 +25,7 @@ Serials:<br/>
      <td rowspan=2><img src='{{movie.get_small_url}}'/><td/>
   </tr>
   <tr>
-     <td>{{movie.name}}<br/>{{movie.full_describe|markdown}}<td>
+     <td>{{movie.name}}<br/>{{movie.full_description|markdown}}<td>
      <td>{{movie.pub_date}}</td>
      <td><a href={{movie.get_absolute_url}}>download</a></td>
   </tr>

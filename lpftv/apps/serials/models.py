@@ -10,7 +10,7 @@ class CFilm(models.Model):
     Base model for 'Movie' and 'Serial' models 
     """
     name = models.CharField(max_length = 50, verbose_name = "Serials' name")
-    full_describe = models.TextField(verbose_name = "Full describe", blank = True)
+    full_description = models.TextField(verbose_name = "Full description", blank = True)
     origin_img = models.ImageField(upload_to = "photos") 
     last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
     pub_date = models.DateTimeField()
@@ -79,8 +79,8 @@ def pre_save(sender, **kwargs):
         None
 
 class Serial(CFilm):
-    """Contein serial describe and movie"""
-    short_describe = models.TextField(verbose_name = "Short describe")
+    """Contein serial description and movie"""
+    short_description = models.TextField(verbose_name = "Short description")
 
     def get_absolute_url(self):
         return reverse('serial_detail', args=[self.id])
@@ -97,8 +97,8 @@ class Movie(CFilm):
 class NewsRecord(models.Model):
     """This models uses for save news"""
     name = models.CharField(max_length = 100, verbose_name = "News name")
-    short_describe = models.TextField(verbose_name = "Short describe")
-    full_describe = models.TextField(verbose_name = "Full desribe")
+    short_description = models.TextField(verbose_name = "Short description")
+    full_description = models.TextField(verbose_name = "Full desribe")
     pub_date = models.DateTimeField()
     
     def __unicode__(self):
