@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from datetime import datetime
 from django.conf import settings
 from django.db import models
 from django.core.urlresolvers import reverse
@@ -7,13 +9,13 @@ __docformat__ = "restructuredtext"
 
 class CFilm(models.Model):
     """
-    Base model for 'Movie' and 'Serial' models 
+    Base model for 'Episode' and 'Serial' models 
     """
-    name = models.CharField(max_length = 50, verbose_name = "Serials' name")
+    name = models.CharField(max_length = 50, verbose_name = "name")
     full_description = models.TextField(verbose_name = "Full description", blank = True)
     origin_img = models.ImageField(upload_to = "photos") 
     last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(default = datetime.now)
 
     def get_thumb_url(self):
         """Return url to small image"""
@@ -44,15 +46,6 @@ class CFilm(models.Model):
             print "Error"
 
 
-    def pre_save(self):
-        """Remove old images"""
-        try: 
-            if os.path.exists(self.get_last_img_path()):
-                os.remove(self.get_last_img_path())
-            if os.path.exists(self.last_img.path):
-                os.remove(self.last_img.path)
-        except: pass 
-        self.last_img = self.origin_img
 
     def delete(self):
         """Remove images and remove record in database"""
@@ -63,43 +56,44 @@ class CFilm(models.Model):
                 os.remove(self.get_thumb_path())
         except: pass
 
-    def __unicode__(self):
-        return self.name
+        def __unicode__(self):
+            return self.name
 
-    class Meta:
-        ordering = ('-pub_date',)
+        class Meta:
+            ordering = ('-pub_date',)
 
 
-def pre_save(sender, **kwargs):
-    """Call 'pre_save()' to all objects what saving"""
-    sobject = kwargs['instance']
-    try:
-        sobject.pre_save()
-    except:
-        None
+def remove_imgs(sender, instance, *args, **kwargs):
+    """Remove old images"""
+    if instance:
+        try: 
+            if os.path.exists(instance.get_last_img_path()):
+                os.remove(instance.get_last_img_path())
+            if os.path.exists(instance.last_img.path):
+                os.remove(instance.last_img.path)
+        except: pass 
+        instance.last_img = instance.origin_img
+
 
 class Serial(CFilm):
-    """Contein serial description and movie"""
+    """Contains serial description and movie"""
     short_description = models.TextField(verbose_name = "Short description")
 
     def get_absolute_url(self):
         return reverse('serial_detail', args=[self.id])
 
-class Movie(CFilm):
-    """This model is for save real movie(serial)"""
+class Episode(CFilm):
+    """This model is for episode"""
     serial = models.ForeignKey(Serial)
-    movie = models.FileField(upload_to = "serials")
+    movie_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
 
-    def get_absolute_url(self):
-        """Url for download"""
-        return self.movie.url
 
-class NewsRecord(models.Model):
-    """This models uses for save news"""
+class News(models.Model):
+    """News on site"""
     name = models.CharField(max_length = 100, verbose_name = "News name")
     short_description = models.TextField(verbose_name = "Short description")
-    full_description = models.TextField(verbose_name = "Full desribe")
-    pub_date = models.DateTimeField()
+    full_description = models.TextField(verbose_name = "Full description")
+    pub_date = models.DateTimeField(default = datetime.now)
     
     def __unicode__(self):
         return self.name 
@@ -110,5 +104,6 @@ class NewsRecord(models.Model):
     def get_absolute_url(self):
         return reverse('news_detail', args=[self.id])
 
-models.signals.pre_save.connect(pre_save)
+models.signals.pre_save.connect(remove_imgs, sender = Episode)
+models.signals.pre_save.connect(remove_imgs, sender = Serial )
 
