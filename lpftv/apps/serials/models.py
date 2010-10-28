@@ -100,6 +100,8 @@ class News(models.Model):
 
     class Meta:
         ordering = ('-pub_date','name')
+        verbose_name = "News-item "
+        verbose_name_plural = "News on site"
 
     def get_absolute_url(self):
         return reverse('news_detail', args=[self.id])
