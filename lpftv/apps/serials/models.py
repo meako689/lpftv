@@ -15,12 +15,12 @@ class CFilm(models.Model):
     last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
     pub_date = models.DateTimeField()
 
-    def get_small_url(self):
+    def get_thumb_url(self):
         """Return url to small image"""
         return self.origin_img.url[:self.origin_img.url.rindex('.')]+ \
                 ".small"+self.origin_img.url[self.origin_img.url.rindex('.'):]
 
-    def get_small_path(self):
+    def get_thumb_path(self):
         """Return path in local disk to small image"""
         return self.origin_img.path[:self.origin_img.path.rindex('.')]+ \
             ".small"+self.origin_img.path[self.origin_img.path.rindex('.'):]
@@ -39,7 +39,7 @@ class CFilm(models.Model):
         try:
             im = Image.open(self.origin_img.path)
             im.thumbnail((size, size), Image.ANTIALIAS)
-            im.save(self.get_small_path(), "jpeg") 
+            im.save(self.get_thumb_path(), "jpeg") 
         except IOError:
             print "Error"
 
@@ -59,8 +59,8 @@ class CFilm(models.Model):
         try:
             if os.path.exist(self.origin_img.path):
                 os.remove(self.origin_img.path)
-            if os.path.exists(self.get_small_path()):
-                os.remove(self.get_small_path())
+            if os.path.exists(self.get_thumb_path()):
+                os.remove(self.get_thumb_path())
         except: pass
 
     def __unicode__(self):

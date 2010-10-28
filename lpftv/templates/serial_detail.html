@@ -22,7 +22,7 @@ Serials:<br/>
 {% for movie in movies %}
 <table border=0>
   <tr>
-     <td rowspan=2><img src='{{movie.get_small_url}}'/><td/>
+     <td rowspan=2><img src='{{movie.get_thumb_url}}'/><td/>
   </tr>
   <tr>
      <td>{{movie.name}}<br/>{{movie.full_description|markdown}}<td>
