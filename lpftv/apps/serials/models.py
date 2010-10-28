@@ -56,11 +56,11 @@ class CFilm(models.Model):
                 os.remove(self.get_thumb_path())
         except: pass
 
-        def __unicode__(self):
-            return self.name
+    def __unicode__(self):
+        return self.name
 
-        class Meta:
-            ordering = ('-pub_date',)
+    class Meta:
+        ordering = ('-pub_date',)
 
 
 def remove_imgs(sender, instance, *args, **kwargs):
