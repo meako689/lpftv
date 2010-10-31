@@ -98,3 +98,8 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'apps.serials',
 )
+
+#It's size for thumb image
+IMAGE_XY = 100
+#Default image
+IMAGE_DEFAULT = MEDIA_URL + "photos/default.jpg"

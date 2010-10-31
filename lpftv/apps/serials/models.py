@@ -13,14 +13,17 @@ class CFilm(models.Model):
     """
     name = models.CharField(max_length = 50, verbose_name = "name")
     full_description = models.TextField(verbose_name = "Full description", blank = True)
-    origin_img = models.ImageField(upload_to = "photos") 
-    last_img = models.ImageField(upload_to = "photos", editable = False, default = "")
+    origin_img = models.ImageField(upload_to = "photos", blank = True) 
+    last_img = models.ImageField(upload_to = "photos", editable = False, blank = True, default = "")
     pub_date = models.DateTimeField(default = datetime.now)
 
     def get_thumb_url(self):
-        """Return url to small image"""
-        return self.origin_img.url[:self.origin_img.url.rindex('.')]+ \
+        """Return url to small image(if not small image return default)"""
+        try:
+            return self.origin_img.url[:self.origin_img.url.rindex('.')]+ \
                 ".small"+self.origin_img.url[self.origin_img.url.rindex('.'):]
+        except:
+            return settings.IMAGE_DEFAULT
 
     def get_thumb_path(self):
         """Return path in local disk to small image"""
@@ -32,18 +35,25 @@ class CFilm(models.Model):
         try:
             return self.last_img.path[:self.last_img.path.rindex('.')]+ \
                 ".small"+self.last_img.path[self.last_img.path.rindex('.'):]
-        except: '' 
+        except: "" 
+
+    def get_image(self):
+        try:
+            return self.origin_img.url
+        except:
+            return settings.IMAGE_DEFAULT
 
     def save(self):
         """Saving small image 'size'x'size' in local disk"""
-        models.Model.save(self)
-        size = 200
-        try:
-            im = Image.open(self.origin_img.path)
-            im.thumbnail((size, size), Image.ANTIALIAS)
-            im.save(self.get_thumb_path(), "jpeg") 
-        except IOError:
-            print "Error"
+        super(CFilm, self).save()
+        size = settings.IMAGE_XY
+        if self.origin_img:
+            try:
+                im = Image.open(self.origin_img.path)
+                im.thumbnail((size, size), Image.ANTIALIAS)
+                im.save(self.get_thumb_path(), "jpeg") 
+            except IOError:
+                print "Cann't get small image!"
 
 
 
@@ -54,7 +64,8 @@ class CFilm(models.Model):
                 os.remove(self.origin_img.path)
             if os.path.exists(self.get_thumb_path()):
                 os.remove(self.get_thumb_path())
-        except: pass
+        except: 
+            print "Cann't delete file"
 
     def __unicode__(self):
         return self.name
@@ -71,7 +82,8 @@ def remove_imgs(sender, instance, *args, **kwargs):
                 os.remove(instance.get_last_img_path())
             if os.path.exists(instance.last_img.path):
                 os.remove(instance.last_img.path)
-        except: pass 
+        except: 
+            print "Cann't remove old image"
         instance.last_img = instance.origin_img
 
 
