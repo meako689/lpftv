@@ -19,10 +19,10 @@ class CFilm(models.Model):
 
     def get_thumb_url(self):
         """Return url to small image(if not small image return default)"""
-        try:
+        if self.origin_img:
             return self.origin_img.url[:self.origin_img.url.rindex('.')]+ \
                 ".small"+self.origin_img.url[self.origin_img.url.rindex('.'):]
-        except:
+        else:
             return settings.IMAGE_DEFAULT
 
     def get_thumb_path(self):
@@ -32,15 +32,16 @@ class CFilm(models.Model):
 
     def get_last_img_path(self):
         """This function used only in pre_save()"""
-        try:
+        if self.last_img:
             return self.last_img.path[:self.last_img.path.rindex('.')]+ \
                 ".small"+self.last_img.path[self.last_img.path.rindex('.'):]
-        except: "" 
+        else: "" 
 
-    def get_image(self):
-        try:
+    def get_image_url(self):
+        """Return image url or default image url"""
+        if self.origin_img:
             return self.origin_img.url
-        except:
+        else:
             return settings.IMAGE_DEFAULT
 
     def save(self):
@@ -64,7 +65,7 @@ class CFilm(models.Model):
                 os.remove(self.origin_img.path)
             if os.path.exists(self.get_thumb_path()):
                 os.remove(self.get_thumb_path())
-        except: 
+        except IOError: 
             print "Cann't delete file"
 
     def __unicode__(self):
@@ -82,7 +83,7 @@ def remove_imgs(sender, instance, *args, **kwargs):
                 os.remove(instance.get_last_img_path())
             if os.path.exists(instance.last_img.path):
                 os.remove(instance.last_img.path)
-        except: 
+        except IOError: 
             print "Cann't remove old image"
         instance.last_img = instance.origin_img
 
