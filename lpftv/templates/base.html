@@ -16,7 +16,13 @@
 {% endblock %}
 </div>
 <div class="sidebar">
-<h2>Свіжі серії</h2>
+<h2>Свіжі серії</h2><hr/>
+{% load serial_tags %}
+{% last_episode %}
+<--Тут обробка епізодів-->
+{% for episode in last_episodes %}
+  {{episode.name}}<br/>
+{% endfor %}
 </div>
 </body>
 </html>

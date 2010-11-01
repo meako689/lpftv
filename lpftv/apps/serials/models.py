@@ -83,7 +83,7 @@ def remove_imgs(sender, instance, *args, **kwargs):
                 os.remove(instance.get_last_img_path())
             if os.path.exists(instance.last_img.path):
                 os.remove(instance.last_img.path)
-        except IOError: 
+        except: 
             print "Cann't remove old image"
         instance.last_img = instance.origin_img
 
