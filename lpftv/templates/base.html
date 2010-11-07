@@ -11,22 +11,23 @@ type="text/css" media="screen, projection"><![endif]-->
   <div>
     <img id="background_image" src="{{MEDIA_URL}}/img/background.png" alt="" />
   </div>
-<div class="container">
-  <h2>
+<div class="container baner-box">
+  <img width="955" height="335" src="{{MEDIA_URL}}/baner/some.png" alt"" />
+</div>
+<div class="baner-box">
      <div class="container button_border"> 
        <a class="button" href={% url apps.serials.views.index %}>ПРО НАС</a>
        <a class="button" href={% url apps.serials.views.show_serial %}>СЕРІАЛИ</a>
        <a class="button" href={% url apps.serials.views.show_news %}>НОВИНИ</a>
      <input type="text" class="find" />
      </div>
-  </h2>
 </div>
-<div class="container">
-  <div class="span-18">
+<div class="container container-box">
+  <div class="span-15">
     {% block content %}
     {% endblock %}
   </div>
-  <div class="span-6 last">
+  <div class="span-6 last small-box">
     <h2 class="white">Свіжі серії</h2>
     {% load serial_tags %}
     {% last_episode %}

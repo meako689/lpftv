@@ -11,6 +11,26 @@
   height: 45%;
 }
 
+.baner-box
+{
+  margin: 0px;
+  padding-left: 45px;
+  padding-top: 35px;
+}
+
+.container-box
+{
+  margin: 0px;
+  padding-left: 40px;
+  padding-top: 40px;
+}
+
+.small-box
+{
+  margin: 0px;
+  padding-left: 33px;
+}
+
 div.button_border
 {
    margin: 0px;
