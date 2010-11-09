@@ -95,10 +95,16 @@ class Serial(CFilm):
     def get_absolute_url(self):
         return reverse('serial_detail', args=[self.id])
 
+
 class Episode(CFilm):
     """This model is for episode"""
     serial = models.ForeignKey(Serial)
     movie_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+    def __unicode__(self):
+        return "%s - %s" % (self.serial.name, self.name)
+
+    def get_absolute_url(self):
+        return reverse('episode_detail', args=[self.id])
 
 
 class News(models.Model):

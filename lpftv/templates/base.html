@@ -16,9 +16,9 @@ type="text/css" media="screen, projection"><![endif]-->
 </div>
 <div class="baner-box">
      <div class="container button_border"> 
-       <a class="button" href={% url apps.serials.views.index %}>ПРО НАС</a>
-       <a class="button" href={% url apps.serials.views.show_serial %}>СЕРІАЛИ</a>
-       <a class="button" href={% url apps.serials.views.show_news %}>НОВИНИ</a>
+       <a class="button" href="{% url index %}">ПРО НАС</a>
+       <a class="button" href="{% url serials_index %}">СЕРІАЛИ</a>
+       <a class="button" href="{% url news_index %}">НОВИНИ</a>
      <input type="text" class="find" />
      </div>
 </div>
@@ -31,7 +31,6 @@ type="text/css" media="screen, projection"><![endif]-->
     <h2 class="white">Свіжі серії</h2>
     {% load serial_tags %}
     {% last_episode %}
-    <!--Тут обробка епізодів-->
     {% for episode in last_episodes %}
     <a href="{{episode.movie_url}}">
       <div class="span-8 small_border">
