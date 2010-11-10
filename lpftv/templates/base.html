@@ -8,11 +8,8 @@ type="text/css" media="screen, projection"><![endif]-->
 <link rel="stylesheet" href="{{MEDIA_URL}}css/main.css"/ type="text/css">
 </head>
 <body id="body_color">
-  <div>
-    <img id="background_image" src="{{MEDIA_URL}}/img/background.png" alt="" />
-  </div>
 <div class="container baner-box">
-  <img width="955" height="335" src="{{MEDIA_URL}}/baner/some.png" alt"" />
+  <img width="955" height="335" src="{{MEDIA_URL}}baner/some.png" alt"" />
 </div>
 <div class="baner-box">
      <div class="container button_border"> 
@@ -33,7 +30,7 @@ type="text/css" media="screen, projection"><![endif]-->
     {% last_episode %}
     <!--Тут обробка епізодів-->
     {% for episode in last_episodes %}
-    <a href="{{episode.movie_url}}">
+    <a href="{{episode.serial.get_absolute_url}}">
       <div class="span-8 small_border">
          <div class="left null">
            <img src="{{episode.get_thumb_url}}" width=100>
