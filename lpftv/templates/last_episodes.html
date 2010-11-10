@@ -1,0 +1,16 @@
+<div class="span-6 last small-box">
+    <h2 class="white">Свіжі серії</h2>
+    {% for episode in episodes %}
+    <a href="{{episode.get_absolute_url}}">
+      <div class="span-8 small_border">
+         <div class="left null">
+           <img src="{{episode.get_thumb_url}}" width=100>
+         </div>
+         <div class="span-4 left">
+           <h4>{{episode.name}}</h4>
+           <p class="small">{{episode.full_description}}</p>
+         </div>
+      </div>
+    </a>
+    {% endfor %}
+</div>

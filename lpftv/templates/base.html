@@ -12,36 +12,22 @@ type="text/css" media="screen, projection"><![endif]-->
   <img width="955" height="335" src="{{MEDIA_URL}}baner/some.png" alt"" />
 </div>
 <div class="baner-box">
-     <div class="container button_border"> 
-       <a class="button" href="{% url index %}">ПРО НАС</a>
-       <a class="button" href="{% url serials_index %}">СЕРІАЛИ</a>
+     <form action="find" method="get">
+     <div class="container button_border center"> 
        <a class="button" href="{% url news_index %}">НОВИНИ</a>
-     <input type="text" class="find" />
+       <a class="button" href="{% url serials_index %}">СЕРІАЛИ</a>
+       <a class="button" href="{% url index %}">ПРО НАС</a>
+       <input type="text" class="find" value="пошук"/>
      </div>
+     </form>
 </div>
 <div class="container container-box">
   <div class="span-15">
     {% block content %}
     {% endblock %}
   </div>
-  <div class="span-6 last small-box">
-    <h2 class="white">Свіжі серії</h2>
-    {% load serial_tags %}
-    {% last_episode %}
-    {% for episode in last_episodes %}
-    <a href="{{episode.serial.get_absolute_url}}">
-      <div class="span-8 small_border">
-         <div class="left null">
-           <img src="{{episode.get_thumb_url}}" width=100>
-         </div>
-         <div class="span-4 left">
-           <h4>{{episode.name}}</h4>
-           <p class="small">{{episode.full_description}}</p>
-         </div>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
+  {% load serial_tags %}
+  {% show_last_episodes %}
 </div>
 </body>
 </html>

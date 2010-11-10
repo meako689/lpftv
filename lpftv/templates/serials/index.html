@@ -4,10 +4,10 @@
 {% load comments %}
 {% for new in news %}
 <div class="span-15 object_border">
-  <div class="span-9">
-    <h2 class="object_name">{{new.name}}</h2>
+  <div class="span-8">
+    <h4 class="object_name">{{new.name}}</h4>
   </div>
-  <div class="right">додано {{new.pub_date}}</div>
+  <div class="right">додано {{new.pub_date|date:"m/d/Y"}}</div>
   <hr/>
   <p>{{new.short_description|markdown}}</p>
   <div class="span-10 left">
@@ -20,9 +20,9 @@
 {% for serial in serials %}
 <div class="span-15 object_border">
   <div class="span-9">
-    <h2 class="object_name">{{serial.name}}</h2>
+    <h4 class="object_name">{{serial.name}}</h4>
   </div>
-  <div class="right">додано {{serial.pub_date}}</div>
+  <div class="right">додано {{serial.pub_date|date:"m/d/Y"}}</div>
   <hr/>
   <div class="span-5">
     <img src="{{serial.get_thumb_url}}" class="top left marg" alt="" width="150">

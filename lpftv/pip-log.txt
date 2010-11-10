@@ -1,0 +1,17 @@
+Exception:
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 252, in main
+    self.run(options, args)
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 408, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 1721, in install_files
+    if req_to_install.check_if_exists():
+  File "/usr/lib/python2.6/dist-packages/pip.py", line 1583, in check_if_exists
+    dist = pkg_resources.get_distribution(self.req)
+  File "/usr/lib/python2.6/dist-packages/pkg_resources.py", line 292, in get_distribution
+    if isinstance(dist,Requirement): dist = get_provider(dist)
+  File "/usr/lib/python2.6/dist-packages/pkg_resources.py", line 176, in get_provider
+    return working_set.find(moduleOrReq) or require(str(moduleOrReq))[0]
+  File "/usr/lib/python2.6/dist-packages/pkg_resources.py", line 436, in find
+    raise VersionConflict(dist,req)     # XXX add more info
+VersionConflict: (pip 0.3.1 (/usr/lib/python2.6/dist-packages), Requirement.parse('pip==0.6.3'))
