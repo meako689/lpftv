@@ -7,7 +7,7 @@ register = template.Library()
 class LastEpisodeNode(template.Node):
     """Return 5 last episodes in context 'last_episode' """
     def __init__(self):
-        self.last_episodes = Episode.objects.order_by('-pub_date')[4]
+        self.last_episodes = Episode.objects.order_by('-pub_date')[:4]
     
     def render(self, context):
         context['last_episodes'] = self.last_episodes
