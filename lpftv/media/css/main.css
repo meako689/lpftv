@@ -116,12 +116,8 @@ a
 {
   text-decoration: None;
 }
-a:hover
-{ 
-  color: #fff;
-}
 
-.button
+a.button
 {
     font: bold 13pt/11pt arial;
     color: #fff;
@@ -134,7 +130,12 @@ a:hover
     background: url('../img/button.png') no-repeat;
     margin-left: 3px;
 }
-.button:hover { background-position:0 -50px }
+.button:hover
+{ 
+  background-position:0 -50px;
+  color: #fff; 
+}
+
 
 .next
 {

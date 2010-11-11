@@ -8,12 +8,16 @@
 .pydevproject
 .settings
 
+pip-log.txt
 docs/_build
 
 *.db*
 *settings_local.py
 *.directory
 
+lpftv/bin/*
+lpftv/include/*
+lpftv/lib/*
 lpftv/media/photos/*
 lpftv/media/serials/*
 
