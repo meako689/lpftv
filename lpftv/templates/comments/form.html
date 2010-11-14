@@ -1,4 +1,6 @@
 {% load comments i18n %}
+<h4>Добавити коментар</h4>
+<div class="comments_box">
 <form action="{% comment_form_target %}" method="post">{% csrf_token %}
   {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
   {% for field in form %}
@@ -14,6 +16,7 @@
     {% endif %}
   {% endfor %}
   <p class="submit">
-    <input type="submit" name="post" class="submit-post" value="{% trans "Post" %}" />
+    <input type="submit" name="post" class="submit-post" value="Залишити коментар" />
   </p>
+</div>
 </form>

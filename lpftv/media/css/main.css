@@ -51,6 +51,16 @@ input.find
    padding: 5px;
 }
 
+div.comments_box
+{
+  background: #636363;
+  border-radius: 10px;
+  color: #eee;
+  padding: 10px;
+  margin: 10px;
+  width: 590px;
+}
+
 div.object_border
 {
   margin: 5px;
@@ -136,7 +146,6 @@ a.button
   color: #fff; 
 }
 
-
 .next
 {
   font:  13pt/11pt arial;
@@ -174,3 +183,42 @@ form.reset
   margin: 0px;
   padding: 0px;
 }
+
+hr.comment
+{
+  background: #000;
+  color: #ddd;
+  width: 95%;
+  height: 1px;
+}
+
+form input[type="text"]
+{
+   border: 1px solid #000;
+   background-color: #919191;
+   width: 147px;
+   height: 24px;
+   color: #eee;
+   font: 11pt/10pt arial;
+}
+
+form textarea
+{
+   border: 1px solid #000;
+   background-color: #919191;
+   width: 550px;
+   height: 100px;
+   color: #eee;
+   font: 11pt/10pt arial;
+}
+
+form input[type="submit"]
+{
+  border: None;
+  border-radius: 5px;
+  color: #eee;
+  background: #919191;
+  width: 147px;
+  height: 30px;
+}
+
