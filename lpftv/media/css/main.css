@@ -1,19 +1,20 @@
 #body_color
 {
-  background : #333333 url('../img/background.png') no-repeat;
+    background-color:#333333;
 }
 
 .baner-box
 {
-  margin: 0px;
-  padding-left: 45px;
-  padding-top: 35px;
+  margin-top: 35px;
 }
+.container
+{
 
+  background : transparent url('../img/background.png') no-repeat;
+
+}
 .container-box
 {
-  margin: 0px;
-  padding-left: 40px;
   padding-top: 40px;
 }
 
@@ -30,12 +31,9 @@
 
 div.button_border
 {
-   margin: 0px;
-   padding: 5px;
+   padding: 5px 0px ;
    border: 0;
    background: url('../img/button_line.png') repeat;
-   height: 50px;
-   width: 945px;
 }
 
 input.find
@@ -53,11 +51,15 @@ input.find
 
 div.object_border
 {
-  margin: 5px;
+  margin:15px 0px ;
   background: #fff;
-  padding: 10px;
-  border: 2px ridge #000;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #000;
   color: #000;
+  background-image:url('../img/bottomgrad.png');
+  background-repeat:repeat-x;
+  background-position:bottom;
+
 }
 
 div.small_border
@@ -99,11 +101,18 @@ h2
 h4
 {
   color: #5c949b;
-  font: bold 20pt/18pt arial;
+  font: bold 20px Verdana, sans-serif;
+  letter-spacing:-1px;
   margin: 0px;
-  padding: 5px 0px 0px 10px;
+  padding: 5px 0px 10px 10px;
 }
 
+.object_name
+{
+    border-bottom:1px solid #5c949b;
+    padding-bottom:20px;
+    width:100%;
+}
 p.small
 {
   color: #fff;
@@ -119,16 +128,16 @@ a
 
 a.button
 {
-    font: bold 13pt/11pt arial;
+    font: bold 23px/50px Helvetica,Arial,sans-serif;
+    letter-spacing:-1px;
     color: #fff;
     cursor: pointer;
     display: inline-block;
     height: 50px;
     width: 120px;
-    line-height: 50px;
     text-align: center;
     background: url('../img/button.png') no-repeat;
-    margin-left: 3px;
+    margin-left: 5px;
 }
 .button:hover
 { 
