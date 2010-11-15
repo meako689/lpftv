@@ -1,0 +1,14 @@
+<h4>Коментарі</h4>
+<dl id="comments">
+  {% for comment in comment_list %}
+  <div class="span-15 object_border">
+    <dt id="c{{ comment.id }}">
+       Користувач: {{ comment.name }}<br/>
+       Доданий: {{ comment.submit_date|date:"m/d/Y H:i:s" }}   
+    </dt>
+    <dd>
+        <p>{{ comment.comment }}</p>
+    </dd>
+  </div>
+  {% endfor %}
+</dl>

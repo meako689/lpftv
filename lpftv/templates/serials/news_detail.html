@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 {% load markup %}
-<h2>{{news.name}}</h2>
-<hr/>
-{{news.full_description}}<br/>
-{{news.pub_date}}<br/>
-<hr/>
 {% load comments %}
-{% get_comment_list for news as news_comm %}
-{% for comm in news_comm %}
-{{ comm.name}} :=> {{comm.submit_date|date:"F j, Y : P"}}<br/>
-{{ comm.comment}}<br/>
-<hr/>
-{% endfor %}
+<div class="span-15 object_border">
+  <div class="span-8">
+    <h4 class="object_name">{{news.name}}</h4>
+  </div>
+  <div class="right">додано {{news.pub_date|date:"m/d/Y"}}</div>
+  <hr/>
+  <p>{{news.full_description|markdown}}</p>
+  {% get_comment_count for news as comment_count%}
+  <div class="right next">Коментарі({{comment_count}})</div>
+</div>
+{% render_comment_list for news %}
 {% render_comment_form for news%}
 {% endblock %}

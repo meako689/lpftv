@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-<h4>Some news</h4>
+{% load markup %}
+{% load comments %}
 {% for new in news %}
-<hr/>
-<table border = 0>
-  <tr>
-    <td colspan = 2>{{ new.name }}</td>
-  </tr>
-  <tr>
-    <td colspan = 2>{{ new.short_description}}</td>
-  </tr>
-  <tr>
-    <td>{{ new.pub_date}}</td>
-    <td><a href = {{new.get_absolute_url}}>детальніше</a></td>
-  </tr>
-</table>
+<div class="span-15 object_border">
+  <div class="span-8">
+    <h4 class="object_name">{{new.name}}</h4>
+  </div>
+  <div class="right">додано {{new.pub_date|date:"m/d/Y"}}</div>
+  <hr/>
+  <p>{{new.short_description|markdown}}</p>
+  <div class="span-10 left">
+     <a class="next" href="{{new.get_absolute_url}}">Читати далі</a>
+  </div>
+  {% get_comment_count for new as comment_count%}
+  <div class="right next">Коментарі({{comment_count}})</div>
+</div>
 {% endfor %}
 {% endblock %}

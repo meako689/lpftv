@@ -23,7 +23,7 @@
   padding-left: 33px;
 }
 
-div.center
+.center
 {
   margin: auto;
 }
@@ -33,14 +33,22 @@ div.button_border
    margin: 0px;
    padding: 5px;
    border: 0;
-   background: url('../img/button_line.png') no-repeat;
+   background: url('../img/button_line.png') repeat;
+   height: 50px;
+   width: 945px;
 }
 
 input.find
 {
-   border: 2px solid #aa88ff;
-   background-color: #000;
-
+   border: 1px solid #000;
+   background-color: #919191;
+   width: 147px;
+   height: 24px;
+   color: #fff;
+   font: 11pt/10pt arial;
+   float: right;
+   margin: 15px;
+   padding: 5px;
 }
 
 div.object_border
@@ -49,6 +57,7 @@ div.object_border
   background: #fff;
   padding: 10px;
   border: 2px ridge #000;
+  color: #000;
 }
 
 div.small_border
@@ -89,10 +98,10 @@ h2
 
 h4
 {
-  color: #fff;
-  font: bold 14pt/12pt arial;
+  color: #5c949b;
+  font: bold 20pt/18pt arial;
   margin: 0px;
-  padding: opx;
+  padding: 5px 0px 0px 10px;
 }
 
 p.small
@@ -108,7 +117,7 @@ a
   text-decoration: None;
 }
 
-.button
+a.button
 {
     font: bold 13pt/11pt arial;
     color: #fff;
@@ -118,11 +127,15 @@ a
     width: 120px;
     line-height: 50px;
     text-align: center;
-    background-image: url('../img/button.png');
-    background-repeat: no-repeat;
+    background: url('../img/button.png') no-repeat;
+    margin-left: 3px;
 }
-.button:hover { background-position:0 -51px }{
+.button:hover
+{ 
+  background-position:0 -50px;
+  color: #fff; 
 }
+
 
 .next
 {
@@ -154,4 +167,10 @@ img.marg
 {
   padding: 10px;
   margin: 0px;
+}
+
+form.reset
+{
+  margin: 0px;
+  padding: 0px;
 }

@@ -33,3 +33,4 @@ def episode_detail(request ,s_id, e_id):
 def news_detail(request, n_id):
      news = get_object_or_404(News, id = n_id)
      return render_to_response("serials/news_detail.html", {'news': news, 'next': news.get_absolute_url()}, context_instance=RequestContext(request))
+
