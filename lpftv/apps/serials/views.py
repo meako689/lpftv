@@ -20,8 +20,8 @@ def show_serial(request):
 
 def serial_detail(request, s_id):
      serials = get_object_or_404(Serial, id = s_id)
-     movies = Episode.objects.filter(serial = serials)
-     return render_to_response("serials/serial_detail.html", {'serial': serials, 'movies': movies, 'next': serials.get_absolute_url()}, context_instance=RequestContext(request))
+     episodes = Episode.objects.filter(serial = serials)
+     return render_to_response("serials/serial_detail.html", {'serial': serials, 'episodes': episodes, 'next': serials.get_absolute_url()}, context_instance=RequestContext(request))
 
 def episode_detail(request ,s_id, e_id):
     return object_detail(request,
@@ -34,3 +34,6 @@ def news_detail(request, n_id):
      news = get_object_or_404(News, id = n_id)
      return render_to_response("serials/news_detail.html", {'news': news, 'next': news.get_absolute_url()}, context_instance=RequestContext(request))
 
+def find(request):
+    find_str = request.GET['find']
+    return render_to_response("serials/find.html", {'find_str': find_str}, context_instance=RequestContext(request))

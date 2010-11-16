@@ -84,6 +84,14 @@ div.comment_box
   color: #fff;
 }
 
+div.episode_border
+{
+  background: #eee;
+  margin: 5px;
+  padding: 10px;
+  border: 1px ridge #000;
+  color: #000;
+}
 
 div.small_border
 {
@@ -174,7 +182,7 @@ p
   margin: 10px;
 }
 
-h2.white
+.white
 {
   color: #fff;
 }
@@ -191,6 +199,7 @@ img.marg
 {
   padding: 10px;
   margin: 0px;
+  max-width: 570px;
 }
 
 form.reset

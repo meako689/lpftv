@@ -12,12 +12,12 @@ type="text/css" media="screen, projection"><![endif]-->
   <img width="955" height="335" src="{{MEDIA_URL}}baner/some.png" alt"" />
 </div>
 <div class="baner-box">
-     <form action="find" method="get">
+     <form action="{% url find %}" method="GET">
      <div class="container button_border center"> 
        <a class="button" href="{% url news_index %}">НОВИНИ</a>
        <a class="button" href="{% url serials_index %}">СЕРІАЛИ</a>
        <a class="button" href="{% url index %}">ПРО НАС</a>
-       <input type="text" class="find" value="пошук"/>
+       <input type="text" name="find" class="find" value="пошук"/>
      </div>
      </form>
 </div>

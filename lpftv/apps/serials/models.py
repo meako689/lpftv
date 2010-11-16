@@ -120,7 +120,7 @@ class Episode(CFilm):
             return self.serial.get_thumb_url()
 
     def get_absolute_url(self):
-        return reverse('episode_detail', args=[self.id])
+        return reverse('episode_detail', args=[self.serial.id, self.id])
 
 
 class News(models.Model):
