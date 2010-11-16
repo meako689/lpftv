@@ -2,6 +2,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('apps.serials.views',
     url(r'^$', 'index', name = 'index'),
+    url(r'^find/$', 'find', name='find'),
     url(r'^series/$','show_serial', name = 'serials_index'),
     url(r'^news/$', 'show_news', name = 'news_index'),
     url(r'^series/(?P<s_id>\d+)/$', 'serial_detail', name="serial_detail"),

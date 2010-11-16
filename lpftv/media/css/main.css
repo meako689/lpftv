@@ -29,6 +29,12 @@
   margin: auto;
 }
 
+span.last
+{
+  float: right;
+}
+
+
 div.button_border
 {
    padding: 5px 0px ;
@@ -49,6 +55,16 @@ input.find
    padding: 5px;
 }
 
+div.comments_form
+{
+  background: #636363;
+  border-radius: 10px;
+  color: #eee;
+  padding: 10px;
+  margin: 10px;
+  width: 585px;
+}
+
 div.object_border
 {
   margin:15px 0px ;
@@ -60,6 +76,23 @@ div.object_border
   background-repeat:repeat-x;
   background-position:bottom;
 
+}
+
+div.comment_box
+{
+  margin: 0 0 1px 5px;
+  background: #636363;
+  padding: 10px;
+  color: #fff;
+}
+
+div.episode_border
+{
+  background: #eee;
+  margin: 5px;
+  padding: 10px;
+  border: 1px ridge #000;
+  color: #000;
 }
 
 div.small_border
@@ -139,12 +172,11 @@ a.button
     background: url('../img/button.png') no-repeat;
     margin-left: 5px;
 }
-.button:hover
+a.button:hover
 { 
   background-position:0 -50px;
   color: #fff; 
 }
-
 
 .next
 {
@@ -159,7 +191,7 @@ p
   margin: 10px;
 }
 
-h2.white
+.white
 {
   color: #fff;
 }
@@ -176,6 +208,7 @@ img.marg
 {
   padding: 10px;
   margin: 0px;
+  max-width: 570px;
 }
 
 form.reset
@@ -183,3 +216,41 @@ form.reset
   margin: 0px;
   padding: 0px;
 }
+
+hr.comment
+{
+  background: #000;
+  color: #ddd;
+  width: 95%;
+  height: 1px;
+}
+
+form input[type="text"]
+{
+   border: 1px solid #000;
+   background-color: #919191;
+   width: 147px;
+   height: 24px;
+   color: #eee;
+   font: 11pt/10pt arial;
+}
+
+form textarea
+{
+   border: 1px solid #000;
+   background-color: #919191;
+   width: 550px;
+   height: 100px;
+   color: #eee;
+   font: 11pt/10pt arial;
+}
+
+form input[type="submit"]
+{
+  border: None;
+  color: #eee;
+  background: #919191;
+  width: 147px;
+  height: 30px;
+}
+

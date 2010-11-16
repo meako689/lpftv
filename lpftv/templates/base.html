@@ -18,8 +18,8 @@ type="text/css" media="screen, projection"><![endif]-->
        <a class="button" href="{% url serials_index %}">серіали</a>
        <a class="button" href="{% url index %}">про нас</a>
        </div>
-     <form class="span-8 last" action="find" method="post">
-       <input type="text" class="find" value="пошук"/>
+     <form class="span-8 last" action="{% url find %}" method="post">
+       <input type="text"class="find" value="пошук"/>
      </div>
      </form>
 <div class="container-box span-24">
