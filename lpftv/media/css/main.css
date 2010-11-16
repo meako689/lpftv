@@ -1,6 +1,6 @@
-#body_color
+body
 {
-    background-color:#333333;
+    background-color:#555555;
 }
 
 .baner-box
@@ -10,12 +10,14 @@
 .container
 {
 
-  background : transparent url('../img/background.png') no-repeat;
+    /*border:20px solid transparent;*/
+    /*-moz-border-image:url("../img/rad_shadow.png") 20 20 18 20;*/
+    background : #333333 url('../img/background.png') 0 -170px no-repeat;
 
 }
 .container-box
 {
-  padding-top: 40px;
+  margin-top: 38px;
 }
 
 .small-box
@@ -67,7 +69,7 @@ div.comments_form
 
 div.object_border
 {
-  margin:15px 0px ;
+  margin:0px 0px 30px 0px ;
   background: #fff;
   padding: 10px 10px 20px 10px;
   border: 1px solid #000;
@@ -97,24 +99,47 @@ div.episode_border
 
 div.small_border
 {
-  margin: 5px;
+  margin:0px 0px 10px 0px;
   background: #4d4d4d;
-  padding: 5px;
   border: 2px ridge #fff;
 }
 
-div.right
+div.small_border a:hover
 {
-  float: right;
-  margin: 0px;
-  padding: 10px;
+    background-image:url('../img/seriesbg.png');
+    background-repeat:repeat-y;
 }
 
-div.left
+div.small_border a
+{
+    padding:5px;
+    height:100px;
+    display:block;
+}
+
+div.small_border h5
+{
+    color:white;
+    font-size:19px;
+    line-height:17px;
+    font-weight:normal;
+    margin:0px;
+    padding:0px;
+}
+
+div.small_border img
+{
+    margin-right:5px;
+    border:1px solid black;
+}
+.right
+{
+  float: right;
+}
+
+.left
 {
   float: left;
-  margin: 0px;
-  padding: 10px;
 }
 
 div.null
@@ -127,23 +152,37 @@ h2
 {
   color: #5c949b;
   font: bold 20pt/18pt arial;
-  margin: 0px;
-  padding: 5px;
 }
 
-h4
+div.newseries
+{
+    position:relative;
+
+}
+div.newseries h2
+{
+    color:white;
+    letter-spacing:-1px;
+    position:absolute;
+    font-size:20px;
+    top:-23px;
+}
+
+
+h4, h4 a
 {
   color: #5c949b;
   font: bold 20px Verdana, sans-serif;
   letter-spacing:-1px;
   margin: 0px;
-  padding: 5px 0px 10px 10px;
 }
 
 .object_name
 {
     border-bottom:1px solid #5c949b;
     padding-bottom:20px;
+    height:10px;
+    margin-bottom:12px;
     width:100%;
 }
 p.small
@@ -180,20 +219,18 @@ a.button:hover
 
 .next
 {
-  font:  13pt/11pt arial;
+  font:  13px/11px arial;
   color: #5c949b;
-  margin: 0px;
-  padding: 0px;
 }
 
 p
 {
-  margin: 10px;
+  margin: 10px 0px;
 }
 
-.white
+p a
 {
-  color: #fff;
+    text-decoration:underline;
 }
 
 hr
