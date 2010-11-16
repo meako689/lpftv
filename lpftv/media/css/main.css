@@ -28,6 +28,12 @@
   margin: auto;
 }
 
+span.last
+{
+  float: right;
+}
+
+
 div.button_border
 {
    margin: 0px;
@@ -51,14 +57,14 @@ input.find
    padding: 5px;
 }
 
-div.comments_box
+div.comments_form
 {
   background: #636363;
   border-radius: 10px;
   color: #eee;
   padding: 10px;
   margin: 10px;
-  width: 590px;
+  width: 585px;
 }
 
 div.object_border
@@ -69,6 +75,15 @@ div.object_border
   border: 2px ridge #000;
   color: #000;
 }
+
+div.comment_box
+{
+  margin: 0 0 1px 5px;
+  background: #636363;
+  padding: 10px;
+  color: #fff;
+}
+
 
 div.small_border
 {
@@ -140,7 +155,7 @@ a.button
     background: url('../img/button.png') no-repeat;
     margin-left: 3px;
 }
-.button:hover
+a.button:hover
 { 
   background-position:0 -50px;
   color: #fff; 
@@ -215,7 +230,6 @@ form textarea
 form input[type="submit"]
 {
   border: None;
-  border-radius: 5px;
   color: #eee;
   background: #919191;
   width: 147px;

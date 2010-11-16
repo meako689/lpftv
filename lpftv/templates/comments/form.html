@@ -1,6 +1,6 @@
 {% load comments i18n %}
-<h4>Добавити коментар</h4>
-<div class="comments_box">
+<h2 class="white">Добавити коментар</h2>
+<div class="comments_form">
 <form action="{% comment_form_target %}" method="post">{% csrf_token %}
   {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
   {% for field in form %}

@@ -100,8 +100,24 @@ class Episode(CFilm):
     """This model is for episode"""
     serial = models.ForeignKey(Serial)
     movie_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+
     def __unicode__(self):
         return "%s - %s" % (self.serial.name, self.name)
+
+    def get_image_url(self):
+        """Return image url or default image url"""
+        if self.origin_img:
+            return self.origin_img.url
+        else:
+            return self.serial.get_image_url()
+
+    def get_thumb_url(self):
+        """Return url to small image(if not small image return default)"""
+        if self.origin_img:
+            return self.origin_img.url[:self.origin_img.url.rindex('.')]+ \
+                ".small"+self.origin_img.url[self.origin_img.url.rindex('.'):]
+        else:
+            return self.serial.get_thumb_url()
 
     def get_absolute_url(self):
         return reverse('episode_detail', args=[self.id])

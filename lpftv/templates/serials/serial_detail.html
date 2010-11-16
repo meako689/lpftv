@@ -8,12 +8,8 @@
   </div>
   <div class="right">додано {{serial.pub_date|date:"m/d/Y"}}</div>
   <hr/>
-  <div class="span-5">
-    <img src="{{serial.get_image_url}}" class="top left marg" alt=""/> 
-  </div>
-  <div class="span-9">
+    <img src="{{serial.get_image_url}}" width="300" align="left" alt=""/>
     <p>{{serial.full_description|markdown}}</p>
-  </div>
   {% get_comment_count for serial as comment_count %}
   <div class="right next">Коментарі({{comment_count}})</div>
 </div>

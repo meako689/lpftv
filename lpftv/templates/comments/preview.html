@@ -3,13 +3,14 @@
 
 
 {% block title %}{% trans "Preview your comment" %}{% endblock %}
-
 {% block content %}
+
+<div class="comments_form">
   {% load comments %}
   <form action="{% comment_form_target %}" method="post">{% csrf_token %}
     {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
     {% if form.errors %}
-    <h1>{% blocktrans count form.errors|length as counter %}Please correct the error below{% plural %}Please correct the errors below{% endblocktrans %}</h1>
+    <h1>{% blocktrans count form.errors|length as counter %}Введіть коректні дані{% plural %}Введіть коректні дані{% endblocktrans %}</h1>
     {% else %}
     <h1>{% trans "Preview your comment" %}</h1>
       <blockquote>{{ comment|linebreaks }}</blockquote>
@@ -25,13 +26,14 @@
         <p
           {% if field.errors %} class="error"{% endif %}
           {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-          {{ field.label_tag }} {{ field }}
+          {{ field.label_tag }}<br/>{{ field }}
         </p>
       {% endif %}
     {% endfor %}
     <p class="submit">
-    <input type="submit" name="submit" class="submit-post" value="{% trans "Post" %}" />
-    <input type="submit" name="preview" class="submit-preview" value="{% trans "Preview" %}" />
+    <input type="submit" name="submit" class="submit-post" value="Залишити коментар" />
+    <input type="submit" name="preview" class="submit-preview" value="Переглянути" />
     </p>
   </form>
+</div>
 {% endblock %}
