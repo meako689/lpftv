@@ -16,7 +16,7 @@ def show_news(request):
 
 def show_serial(request):
      serials = Serial.objects.all()
-     return render_to_response("serials/serials.html", {'serials': serials}, context_instance=RequestContext(request))
+     return render_to_response("serials/serials.html", {'serials': serials, 'default_width': settings.IMAGE_XY}, context_instance=RequestContext(request))
 
 def serial_detail(request, s_id):
      serials = get_object_or_404(Serial, id = s_id)
