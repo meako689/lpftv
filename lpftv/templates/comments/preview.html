@@ -22,11 +22,21 @@
       {% if field.is_hidden %}
         {{ field }}
       {% else %}
-        {% if field.errors %}{{ field.errors }}{% endif %}
         <p
           {% if field.errors %} class="error"{% endif %}
           {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-          {{ field.label_tag }}<br/>{{ field }}
+          {% ifequal field.name "name" %}
+           <label for="id_name">Ім'я</label><br/>{{ field }}
+          {% endifequal %}
+          {% ifequal field.name "email" %}
+           <label for="id_email">Електрона скринька</label><br/>{{ field }}
+          {% endifequal %}
+          {% ifequal field.name "url" %}
+           <label for="id_url">Посилання на ваш сайт(необов'язково)</label><br/>{{ field }}
+          {% endifequal %}
+          {% ifequal field.name "comment" %}
+           <label for="id_comment">Коментар</label><br/>{{ field }}
+          {% endifequal %}
         </p>
       {% endif %}
     {% endfor %}
