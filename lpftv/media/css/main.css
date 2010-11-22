@@ -1,20 +1,20 @@
-#body_color
+body
 {
-  background : #333333 url('../img/background.png') no-repeat;
+   background:url("../img/bg_wrapper.png") repeat-y scroll center top #2f2f2f;
 }
 
 .baner-box
 {
-  margin: 0px;
-  padding-left: 45px;
-  padding-top: 35px;
+  margin-top: 35px;
 }
+.container
+{
+    background : transparent url('../img/background.png') 0 -170px no-repeat;
 
+}
 .container-box
 {
-  margin: 0px;
-  padding-left: 40px;
-  padding-top: 40px;
+  margin-top: 38px;
 }
 
 .small-box
@@ -36,12 +36,9 @@ span.last
 
 div.button_border
 {
-   margin: 0px;
-   padding: 5px;
+   padding: 5px 0px ;
    border: 0;
    background: url('../img/button_line.png') repeat;
-   height: 50px;
-   width: 945px;
 }
 
 input.find
@@ -69,11 +66,15 @@ div.comments_form
 
 div.object_border
 {
-  margin: 5px;
+  margin:0px 0px 30px 0px ;
   background: #fff;
-  padding: 10px;
-  border: 2px ridge #000;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #000;
   color: #000;
+  background-image:url('../img/bottomgrad.png');
+  background-repeat:repeat-x;
+  background-position:bottom;
+
 }
 
 div.comment_box
@@ -93,26 +94,51 @@ div.episode_border
   color: #000;
 }
 
-div.small_border
+div.episode_list
 {
-  margin: 5px;
+  margin:0px 0px 10px 0px;
   background: #4d4d4d;
-  padding: 5px;
   border: 2px ridge #fff;
 }
 
-div.right
+div.episode_list a:hover
 {
-  float: right;
-  margin: 0px;
-  padding: 10px;
+    background-image:url('../img/seriesbg.png');
+    background-repeat:repeat-y;
 }
 
-div.left
+div.episode_list a
+{
+    padding:5px;
+    height:100px;
+    display:block;
+}
+
+div.episode_list h5
+{
+    color:white;
+    font-size:19px;
+    line-height:17px;
+    font-weight:normal;
+    margin:0px;
+    padding:0px;
+}
+
+div.episode_list img
+{
+    margin-right:5px;
+    border:1px solid black;
+    width:100px;
+    height:100px;
+}
+.right
+{
+  float: right;
+}
+
+.left
 {
   float: left;
-  margin: 0px;
-  padding: 10px;
 }
 
 div.null
@@ -124,19 +150,39 @@ div.null
 h2
 {
   color: #5c949b;
-  font: bold 20pt/18pt arial;
-  margin: 0px;
-  padding: 5px;
+    font-size:24px;
 }
 
-h4
+div.newseries
+{
+    position:relative;
+    margin-bottom:35px;
+}
+div.newseries h2
+{
+    color:white;
+    letter-spacing:-1px;
+    position:absolute;
+    top:-32px;
+}
+
+
+h4, h4 a
 {
   color: #5c949b;
-  font: bold 20pt/18pt arial;
+  font: bold 20px Verdana, sans-serif;
+  letter-spacing:-1px;
   margin: 0px;
-  padding: 5px 0px 0px 10px;
 }
 
+.object_name
+{
+    border-bottom:1px solid #5c949b;
+    padding-bottom:20px;
+    height:10px;
+    margin-bottom:12px;
+    width:100%;
+}
 p.small
 {
   color: #fff;
@@ -152,16 +198,16 @@ a
 
 a.button
 {
-    font: bold 13pt/11pt arial;
+    font: bold 23px/50px Helvetica,Arial,sans-serif;
+    letter-spacing:-1px;
     color: #fff;
     cursor: pointer;
     display: inline-block;
     height: 50px;
     width: 120px;
-    line-height: 50px;
     text-align: center;
     background: url('../img/button.png') no-repeat;
-    margin-left: 3px;
+    margin-left: 5px;
 }
 a.button:hover
 { 
@@ -171,20 +217,18 @@ a.button:hover
 
 .next
 {
-  font:  13pt/11pt arial;
+  font:  13px/11px arial;
   color: #5c949b;
-  margin: 0px;
-  padding: 0px;
 }
 
 p
 {
-  margin: 10px;
+  margin: 10px 0px;
 }
 
-.white
+p a
 {
-  color: #fff;
+    text-decoration:underline;
 }
 
 hr
@@ -245,3 +289,36 @@ form input[type="submit"]
   height: 30px;
 }
 
+
+.footer
+{
+    background-color:white;
+    color:#333333;
+    font-size:12px;
+    padding:10px 0px;
+    text-align:center;
+    border:1px solid black;
+}
+.serials_list
+{
+    background-color:white;
+}
+
+ul.serials_list 
+{
+    margin:0px;
+    border:1px solid black;
+    background:url("../img/bottomgrad.png") repeat-x scroll center bottom #FFFFFF;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.serials_list a
+{
+    color:black;
+
+}
+.serials_list a:hover
+{
+    color:#2f2f2f;
+
+}
