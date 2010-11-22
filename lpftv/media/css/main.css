@@ -1,6 +1,6 @@
 body
 {
-    background-color:#555555;
+   background:url("../img/bg_wrapper.png") repeat-y scroll center top #2f2f2f;
 }
 
 .baner-box
@@ -9,10 +9,7 @@ body
 }
 .container
 {
-
-    /*border:20px solid transparent;*/
-    /*-moz-border-image:url("../img/rad_shadow.png") 20 20 18 20;*/
-    background : #333333 url('../img/background.png') 0 -170px no-repeat;
+    background : transparent url('../img/background.png') 0 -170px no-repeat;
 
 }
 .container-box
@@ -97,27 +94,27 @@ div.episode_border
   color: #000;
 }
 
-div.small_border
+div.episode_list
 {
   margin:0px 0px 10px 0px;
   background: #4d4d4d;
   border: 2px ridge #fff;
 }
 
-div.small_border a:hover
+div.episode_list a:hover
 {
     background-image:url('../img/seriesbg.png');
     background-repeat:repeat-y;
 }
 
-div.small_border a
+div.episode_list a
 {
     padding:5px;
     height:100px;
     display:block;
 }
 
-div.small_border h5
+div.episode_list h5
 {
     color:white;
     font-size:19px;
@@ -127,10 +124,12 @@ div.small_border h5
     padding:0px;
 }
 
-div.small_border img
+div.episode_list img
 {
     margin-right:5px;
     border:1px solid black;
+    width:100px;
+    height:100px;
 }
 .right
 {
@@ -151,21 +150,20 @@ div.null
 h2
 {
   color: #5c949b;
-  font: bold 20pt/18pt arial;
+    font-size:24px;
 }
 
 div.newseries
 {
     position:relative;
-
+    margin-bottom:35px;
 }
 div.newseries h2
 {
     color:white;
     letter-spacing:-1px;
     position:absolute;
-    font-size:20px;
-    top:-23px;
+    top:-32px;
 }
 
 
@@ -291,3 +289,36 @@ form input[type="submit"]
   height: 30px;
 }
 
+
+.footer
+{
+    background-color:white;
+    color:#333333;
+    font-size:12px;
+    padding:10px 0px;
+    text-align:center;
+    border:1px solid black;
+}
+.serials_list
+{
+    background-color:white;
+}
+
+ul.serials_list 
+{
+    margin:0px;
+    border:1px solid black;
+    background:url("../img/bottomgrad.png") repeat-x scroll center bottom #FFFFFF;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.serials_list a
+{
+    color:black;
+
+}
+.serials_list a:hover
+{
+    color:#2f2f2f;
+
+}
