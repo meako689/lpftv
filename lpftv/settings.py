@@ -27,7 +27,7 @@ TIME_ZONE = 'Europe/Kiev'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'uk-ua'
+LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
@@ -64,7 +64,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.csrf.middleware.CsrfMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 STATIC_DOC_ROOT = os.path.join(PROJECT_PATH, 'media')
@@ -98,7 +97,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.comments',
     'django.contrib.markup',
-    'django.contrib.flatpages',
     'apps.serials',
 )
 

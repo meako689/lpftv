@@ -16,10 +16,7 @@ type="text/css" media="screen, projection"><![endif]-->
        <div class="span-14 append-2">
        <a class="button" href="{% url news_index %}">новини</a>
        <a class="button" href="{% url serials_index %}">серіали</a>
-       <a class="button" href="/about/">про нас</a>
-       {% if user.is_superuser %}
-       <a class="right button" href="{% url admin:index %}">Адмінка</a>
-       {% endif %}
+       <a class="button" href="{% url index %}">про нас</a>
        </div>
      <form class="span-8 last" action="{% url find %}" method="post">
        <input type="text"class="find" value="пошук"/>
@@ -32,10 +29,6 @@ type="text/css" media="screen, projection"><![endif]-->
   </div>
   {% load serial_tags %}
   {% show_last_episodes %}
-  {% serials_list %}
-</div>
-<div class="span-24 footer container-box">
-    {% now "Y"%} Команда LPFtv | <a href="/about">Контакти</a> | <a href="/disclaimer">Про авторські права</a>
 </div>
 </div>
 </body>
