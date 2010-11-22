@@ -8,9 +8,12 @@
          </div>
          <div class="span-4 left">
            <h4>{{episode.name}}</h4>
-           <p class="small">{{episode.full_description}}</p>
+           <p class="small">{{episode.full_description|truncatewords:"25"}}</p>
          </div>
       </div>
     </a>
+    {% empty %}
+    <hr class="comment"/>
+    <p class="white">Немає</p>
     {% endfor %}
 </div>
