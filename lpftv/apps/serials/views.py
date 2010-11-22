@@ -1,14 +1,12 @@
 from markdown import markdown
 from django.views.generic.list_detail import object_detail
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from apps.serials.models import Serial, Episode, News
 from django.conf import settings
 from django.template import RequestContext
 
 def index(request):
-     serials = Serial.objects.all()[:5]
-     news = News.objects.all() 
-     return render_to_response("serials/index.html", {'news': news, 'serials': serials}, context_instance=RequestContext(request))
+     return redirect('/news/')
 
 def show_news(request):
      news = News.objects.all()
