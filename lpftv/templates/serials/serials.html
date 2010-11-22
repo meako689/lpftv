@@ -4,22 +4,15 @@
 {% load comments %}
 {% for serial in serials %}
 <div class="span-15 object_border">
-  <div class="span-9">
     <h4 class="object_name">{{serial.name}}</h4>
-  </div>
-  <div class="right">додано {{serial.pub_date|date:"m/d/Y"}}</div>
-  <hr/>
   <div class="span-4">
-    <img src="{{serial.get_thumb_url}}" class="top left marg" alt="" width="150">
+    <img src="{{serial.get_thumb_url}}" alt="">
   </div>
   <div class="span-10">
     <p>{{serial.short_description|markdown}}</p>
-  </div>
-  <div class="span-11 left">
-     <a class="next" href="{{serial.get_absolute_url}}">Читати далі</a>
+     <a class="next" href="{{serial.get_absolute_url}}">Подробиці</a>
   </div>
   {% get_comment_count for serial as comment_count %}
-  <div class="right next">Коментарі({{comment_count}})</div>
 </div>
 {% endfor %}
 {% endblock %}
