@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+{{flatpage.title}}
+{% endblock %}
+{% block content %}
+{% load markup %}
+<div class="span-15 object_border">
+    <h4 class="object_name">{{flatpage.title}}</h4>
+  {{flatpage.content|markdown}}
+</div>
+{% endblock %}
