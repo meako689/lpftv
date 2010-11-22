@@ -6,15 +6,20 @@
   {% for field in form %}
     {% if field.is_hidden %}
       {{ field }}
-    {% else %}
-      {% if field.errors %}{{ field.errors }}{% endif %}
-      <p
-        {% if field.errors %} class="error"{% endif %}
-        {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-        {{ field.label_tag }}<br/>{{ field }}
-      </p>
     {% endif %}
   {% endfor %}
+      <p> 
+        <label for="id_name">Ім'я</label><br/><input id="id_name" type="text" name="name" maxlength="50" /> 
+      </p>
+      <p> 
+        <label for="id_email">Електрона скринька</label><br/><input type="text" name="email" id="id_email" /> 
+      </p>
+      <p> 
+        <label for="id_url">Посилання на ваш сайт(необов'язково)</label><br/><input type="text" name="url" id="id_url" /> 
+      </p> 
+      <p> 
+        <label for="id_comment">Коментар</label><br/><textarea id="id_comment" rows="10" cols="40" name="comment"></textarea> 
+      </p> 
   <p class="submit">
     <input type="submit" name="post" class="submit-post" value="Залишити коментар" />
   </p>

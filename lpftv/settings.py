@@ -106,6 +106,6 @@ INSTALLED_APPS = (
 )
 
 #It's size for thumb image
-IMAGE_XY = 100
+IMAGE_XY = 150
 #Default image
 IMAGE_DEFAULT = MEDIA_URL + "photos/default.jpg"

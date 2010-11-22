@@ -1,5 +1,5 @@
 from markdown import markdown
-from django.views.generic.list_detail import object_detail, object_list
+from django.views.generic.list_detail import object_detail
 from django.shortcuts import render_to_response, get_object_or_404
 from apps.serials.models import Serial, Episode, News
 from django.conf import settings
@@ -11,7 +11,7 @@ def show_news(request):
 
 def show_serial(request):
      serials = Serial.objects.all()
-     return render_to_response("serials/serials.html", {'serials': serials}, context_instance=RequestContext(request))
+     return render_to_response("serials/serials.html", {'serials': serials, 'default_width': settings.IMAGE_XY}, context_instance=RequestContext(request))
 
 def serial_detail(request, slug):
      serials = get_object_or_404(Serial, slug = slug)

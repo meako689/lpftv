@@ -1,6 +1,8 @@
-<h2 class="white">Коментарі</h2>
 <dl id="comments">
-  {% for comment in comment_list %}
+  {% for comment in comment_list|dictsortreversed:"id" %}
+    {% if forloop.first %}
+      <h2 class="white">Коментарі</h2>
+    {% endif %}
   <div class="span-15 comment_box">
     <dt id="c{{ comment.id }}">
        {{ comment.name }}
