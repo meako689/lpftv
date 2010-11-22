@@ -92,15 +92,17 @@ def remove_imgs(sender, instance, *args, **kwargs):
 class Serial(CFilm):
     """Contains serial description and movie"""
     short_description = models.TextField(verbose_name = "Short description")
+    slug = models.SlugField(max_length = 250, unique = True)
 
     def get_absolute_url(self):
-        return reverse('serial_detail', args=[self.id])
+        return reverse('serial_detail', args=[self.slug])
 
 
 class Episode(CFilm):
     """This model is for episode"""
     serial = models.ForeignKey(Serial)
-    movie_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+    download_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+    watch_online_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
 
     def __unicode__(self):
         return "%s - %s" % (self.serial.name, self.name)
