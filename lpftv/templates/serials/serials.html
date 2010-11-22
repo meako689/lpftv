@@ -12,7 +12,6 @@
     <p>{{serial.short_description|markdown}}</p>
      <a class="next" href="{{serial.get_absolute_url}}">Подробиці</a>
   </div>
-  {% get_comment_count for serial as comment_count %}
 </div>
 {% endfor %}
 {% endblock %}

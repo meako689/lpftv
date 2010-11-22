@@ -88,7 +88,6 @@ div.comment_box
 div.episode_border
 {
   background: #eee;
-  margin: 5px;
   padding: 10px;
   border: 1px ridge #000;
   color: #000;
@@ -321,5 +320,29 @@ ul.serials_list
 {
     color:#2f2f2f;
 
+}
+.episode_data
+{
+    float:right;
+}
+.episode_name
+{
+    font-weight:bold;
+    font-size:14px;
+    padding-right:30px;
+}
+
+.technical
+{
+    font-size:80%;
+}
+li.episode 
+{
+    margin-bottom:5px;
+    border-bottom:1px dashed #CCCCCC;
+}
+li.episode a
+{
+    color:#2f2f2f;
 }
 
