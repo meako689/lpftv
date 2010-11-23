@@ -4,7 +4,7 @@
 {% load comments %}
 <div class="span-15 object_border">
     <h4 class="object_name">{{news.name}}</h4>
-  {{new.short_description|markdown}}
+  {{news.short_description|markdown}}
   <br/>
   {{news.full_description|markdown}}
   {% get_comment_count for news as comment_count%}
