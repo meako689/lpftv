@@ -51,6 +51,16 @@ class CFilm(models.Model):
         if self.origin_img:
             try:
                 im = Image.open(self.origin_img.path)
+                #Code for crop image
+                offset = im.size[0] - im.size[1]
+                offset /= 2
+                if offset > 0:
+                    box = (offset, 0, im.size[0]-offset, im.size[1])
+                if offset < 0:
+                    offset *= -1
+                    box = (0, offset, im.size[0], im.size[1]-offset)
+                im = im.crop(box)
+                #End code 
                 im.thumbnail((size, size), Image.ANTIALIAS)
                 im.save(self.get_thumb_path(), "jpeg") 
             except IOError:
