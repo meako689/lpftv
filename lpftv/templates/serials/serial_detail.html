@@ -17,15 +17,17 @@
 <h2 class="white">Серії</h2>
 {% for episode in episodes %}
 <div class="span-15 episode_border">
-  <div class="span-9">
-    <h4 class="object_name">{{episode.name}}</h4>
+  <div class="span-15">
+    <div class="span-9">
+      <h4 class="object_name">{{episode.name}}</h4>
+    </div>
+    <div class="right">додано {{episode.pub_date|date:"m/d/Y"}}</div>
   </div>
-  <div class="right">додано {{episode.pub_date|date:"m/d/Y"}}</div>
-  <div class="span-4">
+  <div class="span-5">
     <img src="{{episode.get_thumb_url}}" class="top left marg" alt="" width="150">
   </div>
-  <div class="span-10">
-    <p>{{episode.short_description|markdown}}</p>
+  <div class="span-9">
+    <p>{{episode.full_description|markdown}}</p>
   </div>
   <div class="span-11 left">
      <a class="next" href="{{episode.get_absolute_url}}">Читати далі</a>

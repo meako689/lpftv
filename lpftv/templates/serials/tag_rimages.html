@@ -1,0 +1,18 @@
+<div id="slide">
+{% for rimage in rimages %}
+   <a href="{{rimage.to_url}}" title="{{rimage.title}}">
+    <img src="{{rimage.image.url}}"></a>
+{% endfor %}
+</div>
+<script type="text/javascript">
+$(document).ready(function(){    
+    $('#slide').slideshow({
+        width:950,      // width in px
+        height:335,     // height in px
+        time: 5000,
+        effect: 'scrollRight',
+        playframe: false,
+        panel: false,
+      }).playSlide();
+});
+</script>

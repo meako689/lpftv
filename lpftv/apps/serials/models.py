@@ -106,7 +106,6 @@ class Serial(CFilm):
     def get_absolute_url(self):
         return reverse('serial_detail', args=[self.id])
 
-
 class Episode(CFilm):
     """This model is for episode"""
     serial = models.ForeignKey(Serial)
@@ -151,6 +150,17 @@ class News(models.Model):
 
     def get_absolute_url(self):
         return reverse('news_detail', args=[self.id])
+
+class RImage(models.Model):
+    """
+    Rotion images
+    """
+    title = models.CharField(max_length = 50, verbose_name = "title")
+    image = models.ImageField(upload_to = "baner", blank = False)
+    to_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+
+    def __unicode__(self):
+        return "%s - %s" % (self.to_url, self.title)
 
 models.signals.pre_save.connect(remove_imgs, sender = Episode)
 models.signals.pre_save.connect(remove_imgs, sender = Serial )
