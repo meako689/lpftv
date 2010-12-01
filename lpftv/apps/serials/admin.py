@@ -3,6 +3,7 @@ from apps.serials.models import Serial, Episode, News, RImage
 
 class SerialAdmin(admin.ModelAdmin):
     list_filter = ['name']
+    prepopulated_fields = {"slug": ("name",)}
     list_display = ('name', 'pub_date')
 
 class EpisodeAdmin(admin.ModelAdmin):

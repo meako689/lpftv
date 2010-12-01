@@ -99,6 +99,9 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.markup',
     'django.contrib.flatpages',
+    
+    'south',
+
     'apps.serials',
 )
 

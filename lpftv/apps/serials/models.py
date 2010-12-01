@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
+import logging
 from datetime import datetime
 from django.conf import settings
 from django.db import models
 from django.core.urlresolvers import reverse
 import Image, os
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
+
 
 __docformat__ = "restructuredtext"
 
@@ -60,7 +66,7 @@ class CFilm(models.Model):
                 im.thumbnail((size, size), Image.ANTIALIAS)
                 im.save(tm_path, "jpeg") 
             except IOError:
-                print "Cann't get small image!"
+                logger.error("Can't get small image!")
 
     def save(self, crop = False, size = settings.IMAGE_XY):
         """Saving small image 'size'x'size' in local disk"""
@@ -80,7 +86,7 @@ class CFilm(models.Model):
                 if os.path.exists(self.get_thumb_path()):
                     os.remove(self.get_thumb_path())
         except IOError: 
-            print "Cann't delete file"
+            logger.error("Can't remove file")
 
     def __unicode__(self):
         return self.name
@@ -99,14 +105,14 @@ def remove_imgs(sender, instance, *args, **kwargs):
             if os.path.exists(instance.last_img.path):
                 os.remove(instance.last_img.path)
         except: 
-            print "Cann't remove old image"
+            logger.error("Can't remove old image")
         instance.last_img = instance.origin_img
 
 
 class Serial(CFilm):
     """Contains serial description and movie"""
     short_description = models.TextField(verbose_name = "Short description")
-    
+    slug = models.SlugField(max_length = 250, unique = True)
     def save(self):
         super(Serial, self).save(crop = False)
         if self.origin_img and os.path.exists(self.origin_img.path): 
@@ -116,13 +122,15 @@ class Serial(CFilm):
              size = settings.IMAGE_XY
              self.save_thumb(size, crop, im_path, tm_path)
                
+
     def get_absolute_url(self):
-        return reverse('serial_detail', args=[self.id])
+        return reverse('serial_detail', args=[self.slug])
 
 class Episode(CFilm):
     """This model is for episode"""
     serial = models.ForeignKey(Serial)
-    movie_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+    download_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+    watch_online_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
 
     def __unicode__(self):
         return "%s - %s" % (self.serial.name, self.name)
@@ -143,7 +151,7 @@ class Episode(CFilm):
             return self.serial.get_thumb_url(".crop")
 
     def get_absolute_url(self):
-        return reverse('episode_detail', args=[self.serial.id, self.id])
+        return reverse('episode_detail', args=[self.serial.slug, self.id])
 
 
 class News(models.Model):
