@@ -1,19 +1,17 @@
 <div id="slide">
 {% for rimage in rimages %}
-   <a href="{{rimage.to_url}}" title="{{rimage.title}}">
-    <img src="{{rimage.image.url}}"></a>
+   {% if rimage.to_url%}<a href="{{rimage.to_url}}" title="{{rimage.title}}"><img src="{{rimage.image.url}}" height="335" width="955"></a>
+   {% else %}
+   <img src="{{rimage.image.url}}" height="335" width="955" alt="{{rimage.title}}">
+   {% endif %}
 {% endfor %}
 </div>
 <script type="text/javascript">
 $(document).ready(function(){    
-    $('#slide').slideshow({
-        width: 950,      // width in px
-        height: 335,     // height in px
-        time: 5000,
-        effecttime: 2000,
-        effect: 'scrollRight',
-        playframe: false,
-        panel: false,
-      }).playSlide();
+$('#slide').cycle({ 
+    fx:      'cover', 
+    speed:    2000, 
+    timeout:  5000
+});
 });
 </script>
