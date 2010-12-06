@@ -45,11 +45,7 @@ class CFilm(models.Model):
 
     def save_thumbs(self):
     #Save both cropped and scaled image
-        crop_tm_path = self.get_thumb_path(CROP_EXP)
-        small_tm_path = self.get_thumb_path(SMALL_EXP)
         im_path = self.origin_img.path
-        small_size = settings.SERIAL_IMAGE_XY
-        crop_size = settings.IMAGE_XY
         if im_path and os.path.exists(im_path):
             try:
                 im = Image.open(im_path)
@@ -62,11 +58,12 @@ class CFilm(models.Model):
                     offset *= -1
                     box = (0, offset, im.size[0], im.size[1]-offset)
                 im_crop = im.crop(box)
-                im_crop.thumbnail((crop_size, crop_size), Image.ANTIALIAS)
-                im_crop.save(crop_tm_path, "jpeg") 
+                im_crop.thumbnail((settings.IMAGE_XY, settings.IMAGE_XY), Image.ANTIALIAS)
+                im_crop.save(self.get_thumb_path(CROP_EXP), "jpeg") 
 
-                im.thumbnail((small_size, small_size), Image.ANTIALIAS)
-                im.save(small_tm_path, "jpeg") 
+                im.thumbnail((settings.SERIAL_IMAGE_XY,settings.SERIAL_IMAGE_XY),
+                    Image.ANTIALIAS)
+                im.save(self.get_thumb_path(SMALL_EXP), "jpeg") 
             except IOError:
                 logger.error("Can't get small image!")
 
