@@ -4,12 +4,8 @@
 {% load markup %}
 <div class="span-15 object_border">
     <h2 class="object_name">{{serial.name}}</h2>
-  <div class="span-4">
-    <img src="{{serial.get_thumb_url}}" alt="">
-  </div>
-  <div class="span-10">
-    {{serial.short_description|markdown}}
-    <br/>
+  <div class="span-14">
+    <img src="{{serial.get_image_url}}" alt="">
      {{serial.full_description|markdown}}
   </div>
 </div>
@@ -29,15 +25,20 @@
     <div class="episode_description">
     {{episode.full_description|markdown|striptags|truncatewords:20}}
     </div>
-    <div class="technical">
-    {% if episode.download_url %}
-    <a href="{{episode.download_url}}">(звантажити)</a>
+        {% if episode.download_url %}
+        <div class="technical download-link">
+        <a target="_blank" href="{{episode.download_url}}"><img class="download-img" src="{{MEDIA_URL}}img/download_page.png" /></a>
+    <a target="_blank" href="{{episode.download_url}}">(звантажити)</a>
+    </div>
     {% endif %}
     {% if episode.watch_online_url %}
-    <a href="{{episode.watch_online_url}}">(переглянути)</a>
-    {% endif %}
+        <div class="technical download-link">
+        <a target="_blank" href="{{episode.watch_online_url}}"><img class="download-img" src="{{MEDIA_URL}}img/television.png" /></a>
+    <a target="_blank" href="{{episode.watch_online_url}}">(переглянути)</a>
     </div>
-  </li>
+    {% endif %}
+    <div class="clearfix"></div>
+  </li >
 {% empty %}
   <hr class="comment"/>
   <p class="white">Ще не залито</p>
