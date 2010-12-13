@@ -25,8 +25,8 @@ type="text/css" media="screen, projection"><![endif]-->
        <a class="right button" href="{% url admin:index %}">Адмінка</a>
        {% endif %}
        </div>
-     <form class="span-8 last" action="{% url find %}" method="post">
-       <input type="text"class="find" value="пошук"/>
+     <form class="span-8 last" action="/search/" method="get">
+       <input name="q" type="text"class="find" value="пошук"/>
      </div>
      </form>
 <div class="container-box span-24">
