@@ -163,9 +163,9 @@ class RImage(models.Model):
         return "%s - %s" % (self.to_url, self.title)
 
     class Meta:
-        ordering = ('-priority',)
+        ordering = ('priority',)
         verbose_name = "Rotation image"
-        verbose_name_plural = "Rotation image"
+        verbose_name_plural = "Rotation images"
 
 
 def modify(sender, instance, *args, **kwargs):
