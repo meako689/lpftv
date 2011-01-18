@@ -68,7 +68,7 @@ class CFilm(models.Model):
             except IOError:
                 logger.error("Can't get small image!")
 
-    def save(self, crop = False, size = settings.IMAGE_XY):
+    def save(self, crop = True, size = settings.IMAGE_XY):
         """Saving small image 'size'x'size' in local disk"""
         super(CFilm, self).save()
         if self.origin_img:
