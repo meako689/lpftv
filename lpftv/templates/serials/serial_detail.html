@@ -4,13 +4,11 @@
 {% load markup %}
 <div class="span-15 object_border">
     <h2 class="object_name">{{serial.name}}</h2>
-  <div class="span-4">
-    <img src="{{serial.get_image_url}}" alt="">
-  </div>
-  <div class="span-10">
-    {{serial.short_description|markdown}}
+  <div>
+    <img src="{{serial.get_image_url}}" class="marg" align="left" alt="">
+    <p>{{serial.short_description|markdown}}</p>
     <br/>
-     {{serial.full_description|markdown}}
+    <p>{{serial.full_description|markdown}}</p>
   </div>
 </div>
 <div class="span-15 episode_border">
