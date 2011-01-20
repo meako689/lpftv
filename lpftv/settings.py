@@ -101,11 +101,19 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     
     'south',
+    'haystack',
 
     'apps.serials',
 )
 
+#Haystack configuration
+HAYSTACK_SITECONF = 'apps.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+#It's must be real path to Whoosh
+HAYSTACK_WHOOSH_PATH = '/home/ivan/work/lpftv/lpftv/index'
+
 #It's size for thumb image
-IMAGE_XY = 150
+IMAGE_XY = 100
+SERIAL_IMAGE_XY = 150
 #Default image
 IMAGE_DEFAULT = MEDIA_URL + "photos/default.jpg"

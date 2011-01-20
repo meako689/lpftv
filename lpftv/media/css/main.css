@@ -17,6 +17,12 @@ body
   margin-top: 38px;
 }
 
+.container-box img
+{
+    max-width:100%;
+    float:left;
+    margin-right:10px;
+}
 .small-box
 {
   margin: 0px;
@@ -57,11 +63,10 @@ input.find
 div.comments_form
 {
   background: #636363;
-  border-radius: 10px;
   color: #eee;
-  padding: 10px;
-  margin: 10px;
-  width: 585px;
+  padding: 15px;
+  margin: 5px;
+  width: 575px;
 }
 
 div.object_border
@@ -98,9 +103,13 @@ div.episode_list
   margin:0px 0px 10px 0px;
   background: #4d4d4d;
   border: 2px ridge #fff;
+    padding:4px;
+    height:102px;
+    display:block;
+    position:relative;
 }
 
-div.episode_list a:hover
+div.episode_list:hover
 {
     background-image:url('../img/seriesbg.png');
     background-repeat:repeat-y;
@@ -108,9 +117,6 @@ div.episode_list a:hover
 
 div.episode_list a
 {
-    padding:5px;
-    height:100px;
-    display:block;
 }
 
 div.episode_list h5
@@ -123,7 +129,7 @@ div.episode_list h5
     padding:0px;
 }
 
-div.episode_list img
+div.episode_list img.episode_preview
 {
     margin-right:5px;
     border:1px solid black;
@@ -142,14 +148,26 @@ div.episode_list img
 
 div.null
 { 
-  margin: 0px;
-  padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 h2
 {
-  color: #5c949b;
+    color: #5c949b;
     font-size:24px;
+}
+
+h2.white
+{
+    color: #fff;
+    font-size: 28px;
+}
+
+div.find_header
+{
+    margin: 0px 0px 0px 10px;
+    padding: 10px;
 }
 
 div.newseries
@@ -259,6 +277,13 @@ hr.comment
   height: 1px;
 }
 
+hr.find
+{
+    height: 0px;
+    border: 1px dotted #a3bae9;
+    border-top:0px;
+    background:transparent;
+}
 form input[type="text"]
 {
    border: 1px solid #000;
@@ -340,9 +365,32 @@ li.episode
 {
     margin-bottom:5px;
     border-bottom:1px dashed #CCCCCC;
+    list-style-type:circle;
 }
 li.episode a
 {
     color:#2f2f2f;
 }
 
+.download-link
+{
+    float:left;
+    width:60px;
+}
+img.download-img
+{
+    float:none;
+    margin-left:9px;
+}
+img.watchonline
+{
+    position:absolute;
+    bottom:5px;
+    right:23px;
+}
+img.download
+{
+    position:absolute;
+    bottom:5px;
+    right:-9px;
+}

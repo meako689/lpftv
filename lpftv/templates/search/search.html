@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="get" action=".">
+    <div class="comment_box find_header">
+        <h2 class="white">Пошук</h2><hr class="find"/>
+        <p><label for="id_q">Знайти:</label><br/><input type="text" name="q" value="231" id="id_q" /> 
+        <label for="id_models_0"><hr class="find" /></p>
+        <p>Шукати у:</label><br/></p>
+        <label for="id_models_0"><input type="checkbox" name="models" value="serials.episode" id="id_models_0" /> Епізодах</label><br/> 
+        <label for="id_models_1"><input type="checkbox" name="models" value="serials.news" id="id_models_1" /> Новинах</label><br/>
+        <label for="id_models_2"><input type="checkbox" name="models" value="serials.serial" id="id_models_2" /> Серіалах</label><br/>
+        <hr class="find"><br/>
+        <input type="submit" value="Пошук">         
+    </div>
+
+        {% if query %}
+            <div class="find_header">
+                <h2 class="white">Результати пошуку:</h2> </div>
+            {% for result in page.object_list|dictsortreversed:"pub_date"  %}
+                <div class="object_border find_header">
+                <h4 class="span-10" >{{result.object.name}}</h4>
+                <div class="span-4 last right">додано {{result.object.pub_date|date:"m.d.Y"}}</div>
+                <hr class="find">
+                <p>{{result.object.full_description|truncatewords:20}}</p>
+                <hr class="find">
+                <a class="next" href="{{result.object.get_absolute_url}}">Читати далі &rarr;</a>
+                </div>
+                <br/>
+            {% empty %}
+               <div class="find_header"> 
+                <h2 class="white">Співпадіння відсутні(</h2>
+               </div>
+            {% endfor %}
+
+            {% if page.has_previous or page.has_next %}
+                <div>
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            {# Show some example queries to run, maybe query syntax, something else? #}
+        {% endif %}
+    </form>
+{% endblock %}

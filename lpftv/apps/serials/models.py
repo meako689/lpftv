@@ -8,7 +8,8 @@ import Image, os
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
-
+CROP_EXP = '.crop'
+SMALL_EXP = '.small'
 
 
 __docformat__ = "restructuredtext"
@@ -20,10 +21,9 @@ class CFilm(models.Model):
     name = models.CharField(max_length = 50, verbose_name = "name")
     full_description = models.TextField(verbose_name = "Full description", blank = True)
     origin_img = models.ImageField(upload_to = "photos/", blank = True) 
-    last_img = models.ImageField(upload_to = "photos/", editable = False, blank = True, default = "")
     pub_date = models.DateTimeField(default = datetime.now)
 
-    def get_thumb_url(self, exp = ".small"):
+    def get_thumb_url(self, exp = SMALL_EXP):
         """Return url to small image(if not small image return default)"""
         if self.origin_img:
             return self.origin_img.url[:self.origin_img.url.rindex('.')]+ \
@@ -31,17 +31,10 @@ class CFilm(models.Model):
         else:
             return settings.IMAGE_DEFAULT
 
-    def get_thumb_path(self, exp = ".small"):
+    def get_thumb_path(self, exp = SMALL_EXP):
         """Return path in local disk to small image"""
         return self.origin_img.path[:self.origin_img.path.rindex('.')]+ \
             exp+self.origin_img.path[self.origin_img.path.rindex('.'):]
-
-    def get_last_img_path(self, exp = ".small"):
-        """This function used only in pre_save()"""
-        if self.last_img:
-            return self.last_img.path[:self.last_img.path.rindex('.')]+ \
-                exp+self.last_img.path[self.last_img.path.rindex('.'):]
-        else: "" 
 
     def get_image_url(self):
         """Return image url or default image url"""
@@ -50,31 +43,35 @@ class CFilm(models.Model):
         else:
             return settings.IMAGE_DEFAULT
 
-    def save_thumb(self, size, crop, im_path, tm_path):
-        if im_path:
+    def save_thumbs(self):
+    #Save both cropped and scaled image
+        im_path = self.origin_img.path
+        if im_path and os.path.exists(im_path):
             try:
                 im = Image.open(im_path)
-                if crop:
-                    offset = im.size[0] - im.size[1]
-                    offset /= 2
-                    if offset > 0:
-                        box = (offset, 0, im.size[0]-offset, im.size[1])
-                    if offset < 0:
-                        offset *= -1
-                        box = (0, offset, im.size[0], im.size[1]-offset)
-                    im = im.crop(box)
-                im.thumbnail((size, size), Image.ANTIALIAS)
-                im.save(tm_path, "jpeg") 
+
+                offset = im.size[0] - im.size[1]
+                offset /= 2
+                if offset > 0:
+                    box = (offset, 0, im.size[0]-offset, im.size[1])
+                if offset < 0:
+                    offset *= -1
+                    box = (0, offset, im.size[0], im.size[1]-offset)
+                im_crop = im.crop(box)
+                im_crop.thumbnail((settings.IMAGE_XY, settings.IMAGE_XY), Image.ANTIALIAS)
+                im_crop.save(self.get_thumb_path(CROP_EXP), "jpeg") 
+
+                im.thumbnail((settings.SERIAL_IMAGE_XY,settings.SERIAL_IMAGE_XY),
+                    Image.ANTIALIAS)
+                im.save(self.get_thumb_path(SMALL_EXP), "jpeg") 
             except IOError:
                 logger.error("Can't get small image!")
 
-    def save(self, crop = False, size = settings.IMAGE_XY):
+    def save(self, *args, **kwargs):
         """Saving small image 'size'x'size' in local disk"""
-        super(CFilm, self).save()
+        super(CFilm, self).save(*args, **kwargs)
         if self.origin_img:
-            im_path = self.origin_img.path
-            tm_path = self.get_thumb_path()
-            self.save_thumb(size, crop, im_path, tm_path)
+            self.save_thumbs()
 
 
     def delete(self):
@@ -92,35 +89,16 @@ class CFilm(models.Model):
         return self.name
 
     class Meta:
-        ordering = ('-pub_date',)
+        ordering = ('pub_date',)
         abstract = True
-
-
-def remove_imgs(sender, instance, *args, **kwargs):
-    """Remove old images"""
-    if instance:
-        try: 
-            if os.path.exists(instance.get_last_img_path()):
-                os.remove(instance.get_last_img_path())
-            if os.path.exists(instance.last_img.path):
-                os.remove(instance.last_img.path)
-        except: 
-            logger.error("Can't remove old image")
-        instance.last_img = instance.origin_img
-
 
 class Serial(CFilm):
     """Contains serial description and movie"""
     short_description = models.TextField(verbose_name = "Short description")
     slug = models.SlugField(max_length = 250, unique = True)
-    def save(self):
-        super(Serial, self).save(crop = False)
-        if self.origin_img and os.path.exists(self.origin_img.path): 
-             im_path = self.origin_img.path
-             tm_path = self.get_thumb_path(exp = ".crop")
-             crop = True
-             size = settings.IMAGE_XY
-             self.save_thumb(size, crop, im_path, tm_path)
+    last_modified = models.DateTimeField(auto_now_add = True, editable = True)
+    class Meta:
+        ordering = ('-last_modified',)
                
 
     def get_absolute_url(self):
@@ -146,9 +124,9 @@ class Episode(CFilm):
         """Return url to small image(if not small image return default)"""
         if self.origin_img:
             return self.origin_img.url[:self.origin_img.url.rindex('.')]+ \
-                ".small"+self.origin_img.url[self.origin_img.url.rindex('.'):]
+                CROP_EXP+self.origin_img.url[self.origin_img.url.rindex('.'):]
         else:
-            return self.serial.get_thumb_url(".crop")
+            return self.serial.get_thumb_url(CROP_EXP)
 
     def get_absolute_url(self):
         return reverse('episode_detail', args=[self.serial.slug, self.id])
@@ -177,11 +155,22 @@ class RImage(models.Model):
     Rotion images
     """
     title = models.CharField(max_length = 50, verbose_name = "title")
-    image = models.ImageField(upload_to = "baner", blank = False)
+    image = models.ImageField(upload_to = "banner", blank = False,  help_text ="Image size must be - 955 x 335")
     to_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+    priority = models.IntegerField(default = "0", help_text = "Images sorted by priority")
 
     def __unicode__(self):
         return "%s - %s" % (self.to_url, self.title)
 
-models.signals.pre_save.connect(remove_imgs, sender = Episode)
-models.signals.pre_save.connect(remove_imgs, sender = Serial )
+    class Meta:
+        ordering = ('priority',)
+        verbose_name = "Rotation image"
+        verbose_name_plural = "Rotation images"
+
+
+def modify(sender, instance, *args, **kwargs):
+    """change ordering of serials"""
+    instance.serial.last_modified = datetime.now()
+    instance.serial.save()
+
+models.signals.pre_save.connect(modify, sender = Episode)

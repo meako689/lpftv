@@ -1,0 +1,3 @@
+{{ object.name }}
+{{ object.full_description }}
+{{ object.pub_date }}
