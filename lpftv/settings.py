@@ -113,6 +113,7 @@ HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = '/home/ivan/work/lpftv/lpftv/index'
 
 #It's size for thumb image
-IMAGE_XY = 150
+IMAGE_XY = 100
+SERIAL_IMAGE_XY = 150
 #Default image
 IMAGE_DEFAULT = MEDIA_URL + "photos/default.jpg"

@@ -3,10 +3,17 @@
     {% for episode in episodes %}
       <div class="episode_list">
         <a href="{{episode.get_absolute_url}}">
-           <img class="left" src="{{episode.get_thumb_url}}" width=100>
+           <img class="left episode_preview" src="{{episode.get_thumb_url}}" width=100>
            <h5>{{episode}}</h5>
            <p class="small">{{episode.full_description|truncatewords:10}}</p>
         </a>
+
+    {% if episode.watch_online_url %}
+        <a target="_blank" href="{{episode.watch_online_url}}"><img title="Переглянути онлайн" class="download-img right watchonline" src="{{MEDIA_URL}}img/television.png" /></a>
+    {% endif %}
+    {% if episode.download_url %}
+        <a target="_blank" href="{{episode.download_url}}"><img title="Звантажити" class="download-img right download" src="{{MEDIA_URL}}img/download_page.png" /></a>
+    {% endif %}
       </div>
     {% endfor %}
 </div>

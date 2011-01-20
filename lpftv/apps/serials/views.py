@@ -15,7 +15,7 @@ def show_serial(request):
 
 def serial_detail(request, slug):
     serials = get_object_or_404(Serial, slug = slug)
-    episodes = Episode.objects.filter(serial = serials)
+    episodes = Episode.objects.filter(serial = serials).order_by('pub_date')
     return render_to_response("serials/serial_detail.html", {'serial': serials, 'episodes': episodes, 'next': serials.get_absolute_url()}, context_instance=RequestContext(request))
 
 def episode_detail(request ,slug, e_id):
