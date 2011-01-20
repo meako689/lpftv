@@ -155,11 +155,17 @@ class RImage(models.Model):
     Rotion images
     """
     title = models.CharField(max_length = 50, verbose_name = "title")
-    image = models.ImageField(upload_to = "baner", blank = False)
+    image = models.ImageField(upload_to = "banner", blank = False,  help_text ="Image size must be - 955 x 335")
     to_url = models.URLField(verify_exists = False, max_length = 250, blank = True)
+    priority = models.IntegerField(default = "0", help_text = "Images sorted by priority")
 
     def __unicode__(self):
         return "%s - %s" % (self.to_url, self.title)
+
+    class Meta:
+        ordering = ('-priority',)
+        verbose_name = "Rotation image"
+        verbose_name_plural = "Rotation image"
 
 def modify(sender, instance, *args, **kwargs):
     """change ordering of serials"""

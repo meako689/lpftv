@@ -5,8 +5,10 @@
 <div class="span-15 object_border">
     <h2 class="object_name">{{serial.name}}</h2>
   <div class="span-14">
-    <img src="{{serial.get_image_url}}" alt="">
-     {{serial.full_description|markdown}}
+    <img src="{{serial.get_image_url}}" class="marg" alt="">
+    <p>{{serial.short_description|markdown}}</p>
+    <br/>
+    <p>{{serial.full_description|markdown}}</p>
   </div>
 </div>
 <div class="span-15 episode_border">
