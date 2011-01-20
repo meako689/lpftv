@@ -1,0 +1,8 @@
+Django==1.2.3
+Markdown==2.0.3
+PIL==1.1.7
+South==0.7.3
+Whoosh==1.4.1
+distribute==0.6.10
+-e git://github.com/toastdriven/django-haystack.git@ebfd29f3ba050094d7bb9594278c837099a1db53#egg=django_haystack-1.1.1_beta-py2.6-dev
+wsgiref==0.1.2
