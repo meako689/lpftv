@@ -56,8 +56,19 @@ input.find
    color: #fff;
    font: 11pt/10pt arial;
    float: right;
-   margin: 15px;
+   margin: 15px 15px 0px 0px;
    padding: 5px;
+}
+
+input.find_b
+{
+    border: 0px;
+    background-color: #929292;
+    margin: 15px 15px 0px 0px;
+    padding: 0px;
+    height: 24px;
+    width: 50px;
+    float: right;
 }
 
 div.comments_form
@@ -394,3 +405,4 @@ img.download
     bottom:5px;
     right:-9px;
 }
+

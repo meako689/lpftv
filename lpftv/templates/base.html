@@ -25,10 +25,11 @@ type="text/css" media="screen, projection"><![endif]-->
        <a class="right button" href="{% url admin:index %}">Адмінка</a>
        {% endif %}
        </div>
-     <form class="span-8 last" action="/search/" method="get">
-       <input name="q" type="text"class="find" value="пошук"/>
+       <form class="span-8 last" action="/search/" method="get">    
+         <input id="find_field" name="q" class="find" value="пошук">
+         <input class="find_b" type="button" value="=>" onclick="submit();">    
+       </form>
      </div>
-     </form>
 <div class="container-box span-24">
   <div class="span-16">
     {% block content %}
@@ -41,5 +42,18 @@ type="text/css" media="screen, projection"><![endif]-->
     {% now "Y"%} Команда LPFtv | <a href="/about">Контакти</a> | <a href="/disclaimer">Про авторські права</a>
 </div>
 </div>
+<script type="text/javascript" >
+$("#find_field")
+   .focus(function(){
+      if ($(this).val() == "пошук") {
+         $(this).val("");
+      }
+   })
+   .blur(function(){
+      if ($(this).val() == "") {
+         $(this).val("пошук");
+      }
+   });
+</script>
 </body>
 </html>
