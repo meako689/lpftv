@@ -22,7 +22,8 @@ lpftv/lib/*
 lpftv/media/photos/*
 lpftv/media/serials/*
 lpftv/media/baner/*
+lpftv/media/banner/*
 lpftv/src/*
 lpftv/index/*
-lpftv.media/index/*
+lpftv/media/index/*
 
