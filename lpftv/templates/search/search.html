@@ -4,7 +4,7 @@
     <form method="get" action=".">
     <div class="comment_box find_header">
         <h2 class="white">Пошук</h2><hr class="find"/>
-        <p><label for="id_q">Знайти:</label><br/><input type="text" name="q"  id="id_q" /> 
+        <p><label for="id_q">Знайти:</label><br/><input type="text" name="q"  id="id_q" value="{{ find_text }}"/> 
         <label for="id_models_0"><hr class="find" /></p>
         <p>Шукати у:</label><br/></p>
         <label for="id_models_0"><input type="checkbox" name="models" value="serials.episode" id="id_models_0" checked/> Епізодах</label><br/> 
@@ -29,7 +29,7 @@
                 <br/>
             {% empty %}
                <div class="find_header"> 
-                <h2 class="white">Співпадіння відсутні(</h2>
+               <h2 class="white">Співпадіння відсутні.</h2>
                </div>
             {% endfor %}
 
