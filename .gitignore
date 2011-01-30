@@ -19,11 +19,11 @@ docs/_build
 lpftv/bin/*
 lpftv/include/*
 lpftv/lib/*
-lpftv/media/photos/*
-lpftv/media/serials/*
-lpftv/media/baner/*
-lpftv/media/banner/*
+lpftv/static/photos/*
+lpftv/static/serials/*
+lpftv/static/baner/*
+lpftv/static/banner/*
 lpftv/src/*
-lpftv/index/*
-lpftv/media/index/*
+lpftv/static/index/*
+lpftv/build/*
 
