@@ -6,6 +6,9 @@ TEMPLATE_DEBUG = DEBUG
 FILE_UPLOAD_PERMISSIONS = 0666
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, PROJECT_PATH)
+sys.path.insert(0, os.path.join(PROJECT_PATH, 'apps'))
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -87,7 +90,7 @@ INSTALLED_APPS = (
     'south',
     'haystack',
 
-    'apps.serials',
+    'lpftv.apps.serials',
 )
 
 #Haystack configuration
