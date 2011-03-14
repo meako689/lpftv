@@ -1,4 +1,5 @@
 # Django settings for lpftv project.
+import sys
 import os
 
 DEBUG = True

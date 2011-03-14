@@ -18,20 +18,28 @@ type="text/css" media="screen, projection"><![endif]-->
   </div>
      <div class="container-box span-24 button_border"> 
        <div class="span-14 append-2">
-       <a class="button" href="{% url news_index %}">новини</a>
-       <a class="button" href="{% url serials_index %}">серіали</a>
-       <a class="button" href="/about/">про нас</a>
+       <a class="button" href="{% url news_index %}">Новини</a>
+       <a class="button" href="{% url serials_index %}">Серіали</a>
+       <a class="button" href="/about/">Про нас</a>
        {% if user.is_superuser %}
        <a class="right button" href="{% url admin:index %}">Адмінка</a>
        {% endif %}
        </div>
-       <form class="span-8 last" action="/search/" method="get">    
-         <input id="find_field" name="q" class="find" value="пошук">
-         <input class="find_b" type="button" value="=>" onclick="submit();">    
-       </form>
+       <div class="span-8 last search">
+           <a href="http://twitter.com/lpftv"><img title="Наш твіттер" src="{{MEDIA_URL}}img/twitter_icon.png"/>
+           <a href="http://vkontakte.ru/club14812539"><img title="Ми вконтакті" src="{{MEDIA_URL}}img/vkontakte_icon.png"/>
+           </a>
+           <a href="http://youtube.com/demyanua"><img title="youtube" src="{{MEDIA_URL}}img/youtube_icon.png"/>
+           </a>
+           
+           <form  action="/search/" method="get">    
+             <input id="find_field" name="q" class="find" value="пошук">
+             <input type="submit" class="submit" value="">
+           </form>
+       </div>
      </div>
 <div class="container-box span-24">
-  <div class="span-16">
+  <div class="content span-16">
     {% block content %}
     {% endblock %}
   </div>

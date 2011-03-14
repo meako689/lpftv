@@ -1,27 +1,15 @@
-{% load comments i18n %}
-<h2 class="white">Добавити коментар</h2>
-<div class="comments_form">
-<form action="{% comment_form_target %}" method="post">{% csrf_token %}
+{% load comments %}
+<h2 class="white">Додати коментар</h2>
+<form class="comments_form" action="{% comment_form_target %}" method="post">{% csrf_token %}
   {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
   {% for field in form %}
     {% if field.is_hidden %}
       {{ field }}
     {% endif %}
   {% endfor %}
-      <p> 
-        <label for="id_name">Ім'я</label><br/><input id="id_name" type="text" name="name" maxlength="50" /> 
-      </p>
-      <p> 
-        <label for="id_email">Електрона скринька</label><br/><input type="text" name="email" id="id_email" /> 
-      </p>
-      <p> 
-        <label for="id_url">Посилання на ваш сайт(необов'язково)</label><br/><input type="text" name="url" id="id_url" /> 
-      </p> 
-      <p> 
-        <label for="id_comment">Коментар</label><br/><textarea id="id_comment" rows="10" cols="40" name="comment"></textarea> 
-      </p> 
-  <p class="submit">
+        <label for="id_name">Ім'я:</label><input id="id_name" type="text" name="name" maxlength="50" /> 
+        <label for="id_email">Скринька:</label><input type="text" name="email" id="id_email" /> 
+        <label for="id_url">Cайт:</label><input type="text" name="url" id="id_url" /> 
+        <label for="id_comment">Коментар:</label><textarea id="id_comment" rows="10" cols="40" name="comment"></textarea> 
     <input type="submit" name="post" class="submit-post" value="Залишити коментар" />
-  </p>
-</div>
 </form>

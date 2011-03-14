@@ -47,16 +47,19 @@ div.button_border
    background: url('../img/button_line.png') repeat;
 }
 
+.search{
+    padding-top:8px;
+}
 input.find
 {
    border: 1px solid #000;
+   border-right:none;
    background-color: #919191;
    width: 147px;
-   height: 24px;
+   height: 32px;
    color: #fff;
    font: 11pt/10pt arial;
-   float: right;
-   margin: 15px 15px 0px 0px;
+   float: left;
    padding: 5px;
 }
 
@@ -71,7 +74,21 @@ input.find_b
     float: right;
 }
 
-div.comments_form
+input.submit
+{
+    height:32px;
+    padding:0px;
+    margin:0px;
+    width:32px;
+    border:1px solid black;
+    border-left:none;
+    background-color:#919191;
+    background-image:url( '../img/toolbar_find.png' );
+    background-repeat:no-repeat;
+    background-position:center;
+
+}
+.comments_form
 {
   background: #636363;
   color: #eee;
@@ -79,6 +96,34 @@ div.comments_form
   margin: 5px;
   width: 575px;
 }
+
+.comments_form label
+{
+    float:left;
+    display:block;
+    min-width:80px;
+    height:16px;
+    margin:5px 0px;
+}
+.comments_form input[type="text"]
+{
+    display:block;
+    clear:right;
+    margin:5px 0px;
+    width:82%;
+}
+.comments_form input[type="submit"]
+{
+    margin-top:10px;
+    padding:5px;
+    border:1px solid black;
+    background-color:#4d4d4d;
+    color:white;
+}
+.comments_form input[type="submit"]:hover
+{
+    border:1px solid #919191;
+    }
 
 div.object_border
 {
@@ -118,6 +163,7 @@ div.episode_list
     height:102px;
     display:block;
     position:relative;
+    color:white;
 }
 
 div.episode_list:hover
@@ -128,16 +174,18 @@ div.episode_list:hover
 
 div.episode_list a
 {
+    color:white;
 }
 
 div.episode_list h5
 {
     color:white;
-    font-size:19px;
-    line-height:17px;
+    font-size:15px;
+    line-height:14px;
     font-weight:normal;
     margin:0px;
     padding:0px;
+    text-shadow: #2f2f2f 1px 1px;
 }
 
 div.episode_list img.episode_preview
@@ -201,6 +249,7 @@ h4, h4 a
   font: bold 20px Verdana, sans-serif;
   letter-spacing:-1px;
   margin: 0px;
+
 }
 
 .object_name
@@ -213,8 +262,7 @@ h4, h4 a
 }
 p.small
 {
-  color: #fff;
-  font: 10pt/9pt arial;
+  font-size:85%;
   padding-top: 5px;
   margin: 0px;
 }
@@ -226,7 +274,8 @@ a
 
 a.button
 {
-    font: bold 23px/50px Helvetica,Arial,sans-serif;
+    font: 23px/50px Helvetica,Arial,sans-serif;
+    text-shadow: 1px 1px 2px #2C5C72;
     letter-spacing:-1px;
     color: #fff;
     cursor: pointer;
@@ -299,7 +348,6 @@ form input[type="text"]
 {
    border: 1px solid #000;
    background-color: #919191;
-   width: 147px;
    height: 24px;
    color: #eee;
    font: 11pt/10pt arial;
@@ -315,7 +363,7 @@ form textarea
    font: 11pt/10pt arial;
 }
 
-form input[type="submit"]
+.find_header input[type="submit"]
 {
   border: None;
   color: #eee;
@@ -324,6 +372,10 @@ form input[type="submit"]
   height: 30px;
 }
 
+.content
+{
+        min-height:700px;
+    }
 
 .footer
 {
