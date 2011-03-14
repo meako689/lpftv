@@ -33,8 +33,8 @@ LANGUAGE_CODE = 'uk-ua'
 SITE_ID = 1
 USE_I18N = True
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'static')
-MEDIA_URL = '/media_url/'
-ADMIN_MEDIA_PREFIX = '/multi/'
+MEDIA_URL = '/static/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'yr1@ixe6-um0zoowcu#h=#mfbooc@wm47so5j$uwb975cg5kz1'
@@ -105,3 +105,10 @@ IMAGE_XY = 100
 SERIAL_IMAGE_XY = 150
 #Default image
 IMAGE_DEFAULT = MEDIA_URL + "photos/default.jpg"
+try:
+    from settings_local import *
+except ImportError, e:
+    #sys.stderr.write('settings_local.py not found. Using default settings\n')
+    #sys.stderr.write('%s: %s\n\n' % (e.__class__.__name__, e))
+    pass
+
