@@ -9,7 +9,7 @@
   {{news.full_description|markdown}}
   {% get_comment_count for news as comment_count%}
   <div class="right next">Коментарі({{comment_count}})</div>
-     <div class="span-3 ">додано {{news.pub_date|date:"m.d.Y"}}</div>
+     <div class="span-3 ">додано {{news.pub_date|date:"d.M.Y"}}</div>
 </div>
 {% render_comment_list for news %}
 {% render_comment_form for news %}

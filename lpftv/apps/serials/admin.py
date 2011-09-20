@@ -5,6 +5,12 @@ class SerialAdmin(admin.ModelAdmin):
     list_filter = ['name']
     prepopulated_fields = {"slug": ("name",)}
     list_display = ('name', 'pub_date')
+    fields = ('name', 
+        'short_description', 
+        'full_description',
+        'origin_img',
+        'pub_date',
+        'slug')
 
 class EpisodeAdmin(admin.ModelAdmin):
     list_filter = ['name']

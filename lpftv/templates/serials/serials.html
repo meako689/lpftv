@@ -4,7 +4,7 @@
 {% load comments %}
 {% for serial in serials %}
 <div class="span-15 object_border">
-    <h4 class="object_name">{{serial.name}}</h4>
+    <h4 class="object_name"><a href="{{serial.get_absolute_url}}">{{serial.name}}</a></h4>
   <div class="span-4">
     <img src="{{serial.get_thumb_url}}" alt="">
   </div>

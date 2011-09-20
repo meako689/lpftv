@@ -138,6 +138,11 @@ div.object_border
 
 }
 
+div.object_border iframe
+{
+    width:588px!important;
+}
+
 div.comment_box
 {
   margin: 0 0 1px 5px;
@@ -198,6 +203,7 @@ div.episode_list img.episode_preview
 .right
 {
   float: right;
+  text-align:right;
 }
 
 .left
@@ -255,11 +261,12 @@ h4, h4 a
 .object_name
 {
     border-bottom:1px solid #5c949b;
-    padding-bottom:20px;
-    height:10px;
+    padding-bottom:5px;
     margin-bottom:12px;
     width:100%;
+    overflow:auto;
 }
+
 p.small
 {
   font-size:85%;
@@ -274,17 +281,18 @@ a
 
 a.button
 {
-    font: 23px/50px Helvetica,Arial,sans-serif;
+    font: 20px Helvetica,Arial,sans-serif;
     text-shadow: 1px 1px 2px #2C5C72;
     letter-spacing:-1px;
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    height: 50px;
-    width: 120px;
+    height: 27px;
     text-align: center;
     background: url('../img/button.png') no-repeat;
-    margin-left: 5px;
+    margin: 8px 0px 5px 5px;
+    padding:5px 15px 0px;
+    border-radius:8px;
 }
 a.button:hover
 { 
