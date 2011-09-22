@@ -1,6 +1,8 @@
 import sys,os
 
-PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.normpath(\
+    os.path.join(\
+    os.path.dirname(__file__),'..'))
 
 # Adding modules directory to python path
 sys.path.insert(0, PROJECT_ROOT)
