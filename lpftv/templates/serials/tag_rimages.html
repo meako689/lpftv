@@ -1,8 +1,8 @@
 <div id="slide">
 {% for rimage in rimages %}
-   {% if rimage.to_url%}<a href="{{rimage.to_url}}" title="{{rimage.title}}"><img src="{{rimage.image.url}}" height="335" width="955"></a>
+   {% if rimage.to_url%}<a href="{{rimage.to_url}}" title="{{rimage.title}}"><img src="{{rimage.image.url}}" height="335" width="950"></a>
     {% else %}	
-      <img src="{{rimage.image.url}}" height="335" width="955" alt="{{rimage.title}}">
+      <img src="{{rimage.image.url}}" height="335" width="950" alt="{{rimage.title}}">
     {% endif %}	
 {% endfor %}
 </div>
