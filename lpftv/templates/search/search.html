@@ -20,7 +20,7 @@
             {% for result in page.object_list|dictsortreversed:"pub_date"  %}
                 <div class="object_border find_header">
                 <h4 class="span-10" >{{result.object.name}}</h4>
-                <div class="span-4 last right">додано {{result.object.pub_date|date:"m.d.Y"}}</div>
+                <div class="span-4 last right">додано {{result.object.pub_date|date:"d.m.Y"}}</div>
                 <hr class="find">
                 <p>{{result.object.full_description|truncatewords:20}}</p>
                 <hr class="find">
