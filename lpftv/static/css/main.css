@@ -296,10 +296,14 @@ a.button
 }
 a.button:hover
 { 
-  background-position:0 -50px;
+  background-position:0 -32px;
   color: #fff; 
 }
 
+a.button.active
+{
+    background-position:0 -63px;
+}
 .next
 {
   font:  13px/11px arial;
