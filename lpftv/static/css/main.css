@@ -470,3 +470,8 @@ img.download
     right:-9px;
 }
 
+#slide
+{
+    border:1px solid #CCCCCC;
+    width:950px!important;
+}
