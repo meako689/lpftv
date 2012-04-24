@@ -1,7 +1,6 @@
 <html>
 <head>
-<title>{% block title %}LPF-TV{% endblock %}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{% block title %}lpf-TV — краще українською!{% endblock %}</title>
 <link rel="stylesheet" href="{{MEDIA_URL}}css/screen.css"/ type="text/css">
 <link rel="stylesheet" href="{{MEDIA_URL}}css/print.css" type="text/css" media="print">
 <!--[if lt IE 8]><link rel="stylesheet" href="blueprint/ie.css"
@@ -10,6 +9,9 @@ type="text/css" media="screen, projection"><![endif]-->
 <link href="{{MEDIA_URL}}css/style.css" media="screen" rel="stylesheet" type="text/css" />	
 <script type="text/javascript" src="{{MEDIA_URL}}js/jquery.js"></script>	
 <script type="text/javascript" src="{{MEDIA_URL}}js/jquery.cycle.all.min.js"></script>
+<link rel="icon" 
+      type="image/png" 
+      href="{{MEDIA_URL}}favicon.png">
 </head>
 <body>
  {% load serial_tags %}
@@ -19,6 +21,7 @@ type="text/css" media="screen, projection"><![endif]-->
   </div>
      <div class="container-box span-24 button_border"> 
        <div class="span-14 append-2">
+
        <a class="button{% if request.path == '/'%} active{% endif %}" href="{% url news_index %}">Новини</a>
        <a class="button{% if '/series/' in request.path%} active{% endif %}" href="{% url serials_index %}">Серіали</a>
        <a class="button{% if request.path == '/about/'%} active{% endif %}" href="/about/">Про нас</a>

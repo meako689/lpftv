@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+{{flatpage.title}}
+{% endblock %}
+{% block content %}
+<div class="span-15 object_border">
+    <h4 class="object_name">{{flatpage.title}}</h4>
+  {% autoescape off %}
+  {{flatpage.content|safe}}
+  {% endautoescape %}
+</div>
+{% endblock %}
