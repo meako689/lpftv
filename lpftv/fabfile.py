@@ -1,7 +1,8 @@
 from __future__ import with_statement
 from fabric.api import local,run,cd, env
+from settings_local import HOSTS
 
-env.hosts = ['meako@78.46.38.205:22222']
+env.hosts = HOSTS
 prefix = '/var/www/meako/data/'
 
 def deploy():
